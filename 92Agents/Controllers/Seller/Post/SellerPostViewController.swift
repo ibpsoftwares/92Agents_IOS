@@ -1,0 +1,74 @@
+//
+//  SellerPostViewController.swift
+//  92Agents
+//
+//  Created by Apple on 22/06/18.
+//  Copyright © 2018 Apple. All rights reserved.
+//
+
+import UIKit
+import Alamofire
+import SKActivityIndicatorView
+
+class SellerPostViewController: UIViewController {
+
+    
+    @IBOutlet var textPost: UITextField!
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func btnBack(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    //MARK: textFieldValidation Method
+    func textFieldValidation()
+    {
+        if (self.textPost.text?.isEmpty)! {
+            Alert.showAlertMessage(vc: self, titleStr: "Alert!", messageStr: "Sell Post Title")
+        }
+        else{
+            sellPostTitleAPI()
+        }
+    }
+    @IBAction func btnPost(_ sender: UIButton) {
+        textFieldValidation()
+    }
+    
+    //MARK: addressAPI Methods
+    func sellPostTitleAPI(){
+        SKActivityIndicator.spinnerColor(UIColor.darkGray)
+        SKActivityIndicator.show("Loading...")
+        
+        let parameters: Parameters = [
+            "id": Model.sharedInstance.userID,
+            "step": "3",
+            "agents_users_role_id": Model.sharedInstance.userRole,
+            "posttitle": self.textPost.text!
+        ]
+        print(parameters)
+        Webservice.apiPost(apiURl:  "http://92agents.com/api/signup", parameters: parameters, headers: nil) { (response:NSDictionary?, error:NSError?) in
+            if error != nil {
+                print(error?.localizedDescription as Any)
+                DispatchQueue.main.async(execute: {
+                    SKActivityIndicator.dismiss()
+                })
+                Alert.showAlertMessage(vc: self, titleStr: "Alert!", messageStr: "Login Failed.Try Again..")
+                return
+            }
+            DispatchQueue.main.async(execute: {
+                SKActivityIndicator.dismiss()
+            })
+            print(response!)
+            
+        }
+    }
+}

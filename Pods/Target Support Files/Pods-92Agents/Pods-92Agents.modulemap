@@ -1,0 +1,6 @@
+framework module Pods_92Agents {
+  umbrella header "Pods-92Agents-umbrella.h"
+
+  export *
+  module * { export * }
+}
