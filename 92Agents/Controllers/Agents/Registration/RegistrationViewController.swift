@@ -62,8 +62,9 @@ class RegistrationViewController: UIViewController {
         }
     }
     @IBAction func btnNext(_ sender: UIButton) {
-        textFieldValidation()
-        
+       // textFieldValidation()
+        let addressVC = UIStoryboard(name: "Agents", bundle: nil).instantiateViewController(withIdentifier: "AgentAddressViewController") as! AgentAddressViewController
+        self.navigationController?.pushViewController(addressVC, animated: true)
     }
     //MARK: signupAPI Methods
     func signupAPI(){

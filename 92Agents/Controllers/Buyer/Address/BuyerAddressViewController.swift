@@ -22,7 +22,8 @@ class BuyerAddressViewController: UIViewController, UIPickerViewDelegate, UIPick
     var countryArr = [getCountryName]()
     var pickerView : UIPickerView!
     var index = NSInteger()
-    
+    var fileArr = NSArray()
+    var select = String()
      //MARK: viewDidLoad Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,10 +59,9 @@ class BuyerAddressViewController: UIViewController, UIPickerViewDelegate, UIPick
                 SKActivityIndicator.dismiss()
             })
             print(response!)
-            for item in (response!.value(forKey: "states") as! NSArray) {
-                print(item)
-                self.countryArr.append(getCountryName.init(name: ((item as! NSDictionary).value(forKey: "state_name") as! String), id: ((item as! NSDictionary).value(forKey: "state_id") as! String)))
-            }
+            self.fileArr = (response!.value(forKey: "states") as! NSArray)
+            print(self.fileArr)
+            
         })
         
     }
@@ -122,26 +122,62 @@ class BuyerAddressViewController: UIViewController, UIPickerViewDelegate, UIPick
         return 1
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return self.countryArr.count
+        if select == "state"{
+            return self.fileArr.count
+        }
+        else if select == "city"{
+            return (((self.fileArr ).object(at: self.index) as! NSDictionary).value(forKey: "state_and_city") as! NSArray).count
+        }
+        return 0
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return self.countryArr[row].name
+        if select == "state" {
+            return ((self.fileArr ).object(at: row) as! NSDictionary).value(forKey: "state_name") as? String
+        }
+        else if select == "city" {
+            return (((((self.fileArr ).object(at: self.index) as! NSDictionary).value(forKey: "state_and_city") as! NSArray).object(at: row) as! NSDictionary).value(forKey: "city_name") as! String)
+        }
+        return nil
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.index = row
-        self.textState.text = self.countryArr[row].name
+        
+        if select == "state" {
+            self.index = row
+            self.textState.text = ((self.fileArr ).object(at: row) as! NSDictionary).value(forKey: "state_name") as? String
+        }
+        else if select == "city" {
+            self.textCity.text = (((((self.fileArr ).object(at: self.index) as! NSDictionary).value(forKey: "state_and_city") as! NSArray).object(at: row) as! NSDictionary).value(forKey: "city_name") as! String)
+        }
     }
     //MARK:- TextFiled Delegate
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        self.pickUp(self.textState)
+        
+        if textField == self.textState {
+            self.pickUp(self.textState)
+            select = "state"
+        }
+        else  if textField == self.textCity {
+            self.pickUp(self.textCity)
+            select = "city"
+        }
     }
     
     //MARK:- Button
     @objc func doneClick() {
-        self.textState.resignFirstResponder()
+        if select == "state" {
+            self.textState.resignFirstResponder()
+        }
+        else  if select == "city" {
+            self.textCity.resignFirstResponder()
+        }
     }
     @objc func cancelClick() {
-        self.textState.resignFirstResponder()
+        if select == "state" {
+            self.textState.resignFirstResponder()
+        }
+        else  if select == "city" {
+            self.textCity.resignFirstResponder()
+        }
     }
     @IBAction func btnNext(_ sender: UIButton) {
         textFieldValidation()

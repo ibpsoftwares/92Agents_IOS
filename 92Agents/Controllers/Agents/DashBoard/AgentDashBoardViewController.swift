@@ -16,13 +16,13 @@ class AgentDashBoardViewController: UIViewController {
 
      //MARK: IBOutlet and Variables
     @IBOutlet var menuContainerView: UIView!
-    @IBOutlet var leftContraings: NSLayoutConstraint!
     var mainMenuActive = false
     @IBOutlet var dashboardTableView: UITableView!
     let kCellIdentifier = "cell"
     var selectedPostArr = [getSelectedPosts]()
     var btnMenu : UIButton!
-    
+    var MenuIsVisible = false
+    @IBOutlet var leadingC: NSLayoutConstraint!
      //MARK: viewDidLoad Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +35,6 @@ class AgentDashBoardViewController: UIViewController {
       
         menuContainerView.layer.shadowRadius = 6
         // call api
-        print("sdhgfhjdsgfdxfjhdsg")
         dashboardAPI()
     }
 
@@ -45,31 +44,47 @@ class AgentDashBoardViewController: UIViewController {
     }
     @IBAction func btnMenu(_ sender: UIButton) {
       
-        UIView.animate(withDuration: 1, animations: {
-             self.menuContainerView.isHidden = false
-            self.menuContainerView.frame.origin.x = +1
-        }) { (_) in
-            UIView.animate(withDuration: 1, delay: 0.2, options: [.curveEaseIn], animations: {
-               // self.menuContainerView.frame.origin.x -= self.menuContainerView.frame.width
-                 //self.menuContainerView.isHidden = true
-            })
-            
+//        UIView.animate(withDuration: 1, animations: {
+//             self.menuContainerView.isHidden = false
+//            self.menuContainerView.frame.origin.x = +1
+//        }) { (_) in
+//            UIView.animate(withDuration: 1, delay: 0.2, options: [.curveEaseIn], animations: {
+//               // self.menuContainerView.frame.origin.x -= self.menuContainerView.frame.width
+//                 //self.menuContainerView.isHidden = true
+//            })
+//
+//        }
+        
+      //animation(viewAnimation: self.menuContainerView)
+        
+       
+       
+        if !MenuIsVisible {
+            leadingC.constant = 150
+            MenuIsVisible = true
+        } else {
+            leadingC.constant = 0
+            MenuIsVisible = false
         }
         
-        
-        
-        
-        
-        
-//        UIView.animate(withDuration: 1.0, delay: 0.3, usingSpringWithDamping: 1.0, initialSpringVelocity: 0, options: [], animations: {
-//            //Set x position what ever you want
-//            self.menuContainerView.frame = CGRect(x: 0, y: 70 , width: self.menuContainerView.frame.size.width - 10, height: self.menuContainerView.frame.size.height)
-//        }, completion: nil)
+        UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations: {
+            self.view.layoutIfNeeded()
+        }) { (animationComplete) in
+            print("The animation is complete!")
+        }
+    }
+    
+    func animation(viewAnimation: UIView) {
+        UIView.animate(withDuration: 1, delay: 0.5, options: [.curveEaseIn], animations: {
+            viewAnimation.frame.origin.x += 10
+        })
+//        UIView.animate(withDuration: 2, animations: {
+//            viewAnimation.frame.origin.x = +170
+//        }) { (_) in
+//            UIView.animate(withDuration: 2, delay: 1, options: [.curveEaseIn], animations: {
+//                viewAnimation.frame.origin.x -= 170
+//            })
 //
-//        UIView.animate(withDuration: 0.5) {
-//             self.menuContainerView.isHidden = false
-//           // self.menuContainerView.frame = CGRect(x: 0, y: 70 , width: -( self.menuContainerView.frame.size.width) , height: self.menuContainerView.frame.size.height)
-//            self.view.layoutIfNeeded()
 //        }
     }
     

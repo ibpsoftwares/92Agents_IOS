@@ -17,7 +17,7 @@ class LeftMenuTableViewController: UIViewController {
     @IBOutlet weak var userAvatarImg: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var menuTableView: UITableView!
-    
+    var vc = AgentDashBoardViewController()
     // MARK: Properties
     let kCellIdentifier = "menuCell"
     let items = ["My Job","Find Agents","Profile","Test","Notes", "Bookmarks","Setting","Logout"]
@@ -39,7 +39,7 @@ class LeftMenuTableViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
+    
     }
 }
 extension LeftMenuTableViewController: UITableViewDataSource {
@@ -62,7 +62,6 @@ extension LeftMenuTableViewController: UITableViewDataSource {
         }
         
     }
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: kCellIdentifier, for: indexPath) as! MenuTableViewCell

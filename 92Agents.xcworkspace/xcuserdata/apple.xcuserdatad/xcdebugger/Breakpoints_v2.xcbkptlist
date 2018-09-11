@@ -26,28 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "92Agents/Controllers/Buyer/Address/BuyerAddressViewController.swift"
-            timestampString = "554036448.968003"
+            timestampString = "558358058.735961"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "178"
-            endingLineNumber = "178"
+            startingLineNumber = "214"
+            endingLineNumber = "214"
             landmarkName = "addressAPI()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "92Agents/Controllers/Buyer/Address/BuyerAddressViewController.swift"
-            timestampString = "554036448.96804"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "136"
-            endingLineNumber = "136"
-            landmarkName = "textFieldDidBeginEditing(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -250,7 +234,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "92Agents/Controllers/Seller/AgentDetail/AgentDetailViewController.swift"
-            timestampString = "557818609.873511"
+            timestampString = "558341538.462255"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "520"
@@ -282,7 +266,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "92Agents/Controllers/Seller/AgentDetail/AgentDetailViewController.swift"
-            timestampString = "557818609.87359"
+            timestampString = "558341538.4624031"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "535"
@@ -298,7 +282,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "92Agents/Controllers/Seller/AgentDetail/AgentDetailViewController.swift"
-            timestampString = "557818609.873633"
+            timestampString = "558341538.462448"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "543"
@@ -314,7 +298,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "92Agents/Controllers/Seller/AgentDetail/AgentDetailViewController.swift"
-            timestampString = "557818609.873674"
+            timestampString = "558341538.4624881"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "578"
@@ -330,7 +314,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "92Agents/Controllers/Seller/AgentDetail/AgentDetailViewController.swift"
-            timestampString = "557818609.87371"
+            timestampString = "558341538.462538"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "622"
@@ -362,7 +346,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "92Agents/Controllers/Seller/AgentDetail/AgentDetailViewController.swift"
-            timestampString = "557818609.8737659"
+            timestampString = "558341538.462604"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "216"
@@ -378,7 +362,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "92Agents/Controllers/Seller/AgentDetail/AgentDetailViewController.swift"
-            timestampString = "557818609.873806"
+            timestampString = "558341538.462658"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "281"
@@ -394,7 +378,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "92Agents/Controllers/Seller/AgentDetail/AgentDetailViewController.swift"
-            timestampString = "557818609.873843"
+            timestampString = "558341538.4627"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "201"
@@ -426,7 +410,7 @@
                   moduleName = "92Agents"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/apple/Documents/92Agents/92Agents/Controllers/Seller/Setting/SettingViewController.swift"
-                  timestampString = "557818525.175841"
+                  timestampString = "558358059.308517"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "116"
@@ -441,7 +425,7 @@
                   moduleName = "92Agents"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/apple/Documents/92Agents/92Agents/Controllers/Seller/Setting/SettingViewController.swift"
-                  timestampString = "557818525.1776071"
+                  timestampString = "558358059.3103729"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "116"
@@ -586,7 +570,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "92Agents/Controllers/Seller/AgentDetail/AgentDetailViewController.swift"
-            timestampString = "557818609.8740129"
+            timestampString = "558341538.462865"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "666"
@@ -602,7 +586,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "92Agents/Controllers/Seller/AgentDetail/AgentDetailViewController.swift"
-            timestampString = "557818609.874051"
+            timestampString = "558341538.462906"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "659"
@@ -618,7 +602,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "92Agents/Controllers/Seller/AgentDetail/AgentDetailViewController.swift"
-            timestampString = "557818609.87409"
+            timestampString = "558341538.462961"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "689"
@@ -634,7 +618,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "92Agents/Controllers/Seller/AgentDetail/AgentDetailViewController.swift"
-            timestampString = "557818609.874127"
+            timestampString = "558341538.46302"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "704"
@@ -666,7 +650,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "92Agents/Controllers/Seller/AgentDetail/AgentDetailViewController.swift"
-            timestampString = "557818609.874181"
+            timestampString = "558341538.463087"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "154"
@@ -682,12 +666,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "92Agents/Controllers/Buyer/Profile/BuyerProfileViewController.swift"
-            timestampString = "557754711.298036"
+            timestampString = "558357478.210421"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "156"
             endingLineNumber = "156"
-            landmarkName = "bookmarkAPI()"
+            landmarkName = "profileAPI()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -698,12 +682,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "92Agents/Controllers/Buyer/Profile/BuyerProfileViewController.swift"
-            timestampString = "557754711.298075"
+            timestampString = "558357478.210466"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "137"
             endingLineNumber = "137"
-            landmarkName = "bookmarkAPI()"
+            landmarkName = "profileAPI()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -729,13 +713,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "92Agents/Controllers/Seller/Dashboard/LeftMenuTableViewController.swift"
-            timestampString = "557824035.987195"
+            filePath = "92Agents/Controllers/Agents/MyJob/AgentMyJobViewController.swift"
+            timestampString = "558358058.736492"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121"
-            landmarkName = "tableView(_:didSelectRowAt:)"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "myJobAPI()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -745,13 +729,61 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "92Agents/Controllers/Agents/MyJob/AgentMyJobViewController.swift"
-            timestampString = "557824035.987252"
+            filePath = "92Agents/Controllers/Agents/Address/AgentAddressViewController.swift"
+            timestampString = "558358058.736575"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
-            landmarkName = "myJobAPI()"
+            startingLineNumber = "159"
+            endingLineNumber = "159"
+            landmarkName = "textFieldDidBeginEditing(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "92Agents/Controllers/Agents/Address/AgentAddressViewController.swift"
+            timestampString = "558358058.736642"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
+            landmarkName = "pickerView(_:didSelectRow:inComponent:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "92Agents/Controllers/Seller/Profile/ProfileViewController.swift"
+            timestampString = "558358058.736698"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "260"
+            endingLineNumber = "260"
+            landmarkName = "updateProfileAPI()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "92Agents/Controllers/Seller/Profile/ProfileViewController.swift"
+            timestampString = "558358058.737038"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "247"
+            endingLineNumber = "247"
+            landmarkName = "updateProfileAPI()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

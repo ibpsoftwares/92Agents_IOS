@@ -105,7 +105,6 @@ extension AgentMyJobViewController: UITableViewDataSource {
         }
         else if(tableView == self.agentTableView){
             if  self.check == true{
-                
                 self.lbl.isHidden = true
                 return ((((self.get_Resp as NSArray).object(at: index) as! NSDictionary).value(forKey: "applied_agent") )as! NSArray).count
             }else{

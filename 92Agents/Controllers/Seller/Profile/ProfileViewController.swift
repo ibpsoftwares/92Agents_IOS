@@ -31,15 +31,42 @@ class ProfileViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     @IBOutlet var textZipcode: UITextField!
      @IBOutlet var lblFullName: UILabel!
      @IBOutlet var lblEmail: UILabel!
+     @IBOutlet var btnAboutMe: UIButton!
+     @IBOutlet var btnAccount: UIButton!
+     @IBOutlet var btnLocation: UIButton!
      var countryArr = [getCountryName]()
      let picker = UIImagePickerController()
+    var fileArr = NSArray()
+    var select = String()
+    var index = NSInteger()
+     var value = String()
+    var cityID = String()
+    var stateID = String()
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         self.profileImg.layer.cornerRadius = self.profileImg.frame.size.height / 2
         self.profileImg.clipsToBounds = true
-        bookmarkAPI()
+        btnAboutMe.isHidden = true
+        btnAccount.isHidden = true
+        btnLocation.isHidden = true
+        self.textAboutme.isUserInteractionEnabled = false
+        self.textFullNamel.isUserInteractionEnabled = false
+        self.textEmail.isUserInteractionEnabled = false
+        self.textAdd1.isUserInteractionEnabled = false
+        self.textadd2.isUserInteractionEnabled = false
+        self.textCity.isUserInteractionEnabled = false
+        self.textState.isUserInteractionEnabled = false
+        self.textPhonecell.isUserInteractionEnabled = false
+        self.textPhonechome.isUserInteractionEnabled = false
+        self.textPhonework.isUserInteractionEnabled = false
+        self.textFax.isUserInteractionEnabled = false
+        self.textZipcode.isUserInteractionEnabled = false
+        
+        fetchCountryAPI()
+        profileAPI()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,11 +75,38 @@ class ProfileViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         
     }
     
+    //MARK: fetchCountryAPI Methods
+    func fetchCountryAPI(){
+        self.countryArr.removeAll()
+        SKActivityIndicator.spinnerColor(UIColor.darkGray)
+        SKActivityIndicator.show("Loading...")
+        
+        Webservice.apiGet(serviceName: "http://92agents.com/api/state", parameters: nil, headers: nil, completionHandler: { (response:NSDictionary?, error:NSError?) in
+            if error != nil {
+                print(error?.localizedDescription as Any)
+                DispatchQueue.main.async(execute: {
+                    SKActivityIndicator.dismiss()
+                })
+                Alert.showAlertMessage(vc: self, titleStr: "Alert!", messageStr: "Login Failed.Try Again..")
+                return
+            }
+            DispatchQueue.main.async(execute: {
+                SKActivityIndicator.dismiss()
+            })
+            print(response!)
+            self.fileArr = (response!.value(forKey: "states") as! NSArray)
+            print(self.fileArr)
+        
+        })
+        
+    }
+    
+    
     @IBAction func btnBack(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
-    //MARK: bookmarkAPI Methods
-    func bookmarkAPI(){
+    //MARK: profileAPI Methods
+    func profileAPI(){
         SKActivityIndicator.spinnerColor(UIColor.darkGray)
         SKActivityIndicator.show("Loading...")
         let parameters: Parameters = [
@@ -68,18 +122,16 @@ class ProfileViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
                 })
                 Alert.showAlertMessage(vc: self, titleStr: "Alert!", messageStr: "Login Failed.Try Again..")
                 return
-                
             }
             DispatchQueue.main.async(execute: {
                 SKActivityIndicator.dismiss()
             })
             print(response!)
-            
             if let dict = response as? [AnyHashable:Any] {
                 print(dict)
-                for item in ((((response)?.value(forKey: "response") as! NSDictionary) ).value(forKey: "states") as! NSArray) {
-                    self.countryArr.append(getCountryName.init(name: ((item as! NSDictionary).value(forKey: "state_name") as! String), id: ((item as! NSDictionary).value(forKey: "state_id") as! String)))
-                }
+//                for item in ((((response)?.value(forKey: "response") as! NSDictionary) ).value(forKey: "states") as! NSArray) {
+//                    self.countryArr.append(getCountryName.init(name: ((item as! NSDictionary).value(forKey: "state_name") as! String), id: ((item as! NSDictionary).value(forKey: "state_id") as! String)))
+//                }
                 DispatchQueue.main.async(execute: {
                     self.profileImg.layer.cornerRadius = self.profileImg.frame.size.height / 2
                     self.profileImg.clipsToBounds = true
@@ -95,15 +147,16 @@ class ProfileViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
                     self.textadd2.text = (((((response)?.value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "address2") as! String)
                     self.textCity.text = (((((response)?.value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "city_id") as! String)
                     
-                    if (((((response)?.value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "state_id") as! String) == "" {
+                    if ((((((response)?.value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "state") as! NSDictionary).value(forKey: "state_name") as! String) == "" {
                     }
                     else{
-                        for section in 0...self.countryArr.count - 1 {
-                            
-                            if (((((response)?.value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "state_id") as! String) == self.countryArr[section].id{
-                                self.textState.text = self.countryArr[section].name
-                            }
-                        }
+                        
+                         self.textState.text = ((((((response)?.value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "state") as! NSDictionary).value(forKey: "state_name") as! String)
+                        self.stateID = String((((((response)?.value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "state") as! NSDictionary).value(forKey: "state_id") as! NSInteger)
+                        self.cityID = String((((((response)?.value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "city") as! NSDictionary).value(forKey: "city_id") as! NSInteger)
+                        
+                        self.textCity.text = ((((((response)?.value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "city") as! NSDictionary).value(forKey: "city_name") as! String)
+                       
                     }
                     self.textPhonecell.text = (((((response)?.value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "phone") as! String)
                     self.textPhonework.text = (((((response )?.value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "phone_work") as! String)
@@ -118,85 +171,126 @@ class ProfileViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
             }
             
         }
+    @IBAction func btnEditAboutMe(_ sender: UIButton) {
+        btnAboutMe.isHidden = false
+        self.textAboutme.isUserInteractionEnabled = true
+        value = "aboutme"
+        
+    }
+    @IBAction func btnEditLocation(_ sender: UIButton) {
+        btnLocation.isHidden = false
+        self.textEmail.isUserInteractionEnabled = true
+        self.textAdd1.isUserInteractionEnabled = true
+        self.textadd2.isUserInteractionEnabled = true
+        self.textCity.isUserInteractionEnabled = true
+        self.textState.isUserInteractionEnabled = true
+        self.textPhonecell.isUserInteractionEnabled = true
+        self.textPhonechome.isUserInteractionEnabled = true
+        self.textPhonework.isUserInteractionEnabled = true
+        self.textFax.isUserInteractionEnabled = true
+        self.textZipcode.isUserInteractionEnabled = true
+         value = "location"
+    }
+    @IBAction func btnEditAccount(_ sender: UIButton) {
+         btnAccount.isHidden = false
+         self.textFullNamel.isUserInteractionEnabled = true
+         value = "account"
+    }
     
-    //MARK: profileAPI Method
-    func profileAPI() {
-        self.countryArr.removeAll()
+    @IBAction func btnAboutMe(_ sender: UIButton) {
+        updateProfileAPI()
+    }
+    @IBAction func btnLocation(_ sender: UIButton) {
+        updateProfileAPI()
+    }
+    @IBAction func btnAccount(_ sender: UIButton) {
+        updateProfileAPI()
+    }
+    //MARK: updateProfileAPI Method
+    func updateProfileAPI(){
         SKActivityIndicator.spinnerColor(UIColor.darkGray)
         SKActivityIndicator.show("Loading...")
-        let url = URL(string: "http://92agents.com/api/profile/buyer")!
-        let jsonDict = [
-            "agents_user_id": Model.sharedInstance.userID,
-            "agents_users_role_id":Model.sharedInstance.userRole,
+//        let parameters: Parameters = [
+//            "agents_user_id": Model.sharedInstance.userID,
+//            "agents_users_role_id":Model.sharedInstance.userRole
+//        ]
+        
+        var parameters: Parameters = [:]
+        
+        if value == "aboutme"{
+            parameters = [
+                 "id": Model.sharedInstance.userID,
+                "description" : self.textAboutme.text!
             ]
-        let jsonData = try! JSONSerialization.data(withJSONObject: jsonDict, options: [])
+        }
+        else if value == "account"{
+            parameters = [
+                "id": Model.sharedInstance.userID,
+                "name" : self.textFullNamel.text!
+            ]
+        }
+        else if value == "location"{
+            parameters = [
+                "id": Model.sharedInstance.userID,
+                "address" : self.textEmail.text!,
+                "address2" : self.textFullNamel.text!,
+                 "city_id" : self.cityID,
+                 "state_id" : self.stateID,
+                   "phone" : self.textPhonecell.text!,
+                   "phone_home" : self.textPhonechome.text!,
+                     "phone_work" : self.textPhonework.text!,
+                      "fax_no" : self.textFax.text!,
+                      "zip_code" : self.textZipcode.text!
+            ]
+        }
         
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        let token = "\(Model.sharedInstance.accessToken)"
-        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-       // request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = jsonData
-        
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let error = error {
-                print("error:", error)
+        print(parameters)
+        Webservice.apiPost(apiURl:"http://92agents.com/api/editFields", parameters: parameters, headers: nil) { (response:NSDictionary?, error:NSError?) in
+            if error != nil {
+                print(error?.localizedDescription as Any)
+                DispatchQueue.main.async(execute: {
+                    SKActivityIndicator.dismiss()
+                })
+                Alert.showAlertMessage(vc: self, titleStr: "Alert!", messageStr: "Login Failed.Try Again..")
                 return
             }
             DispatchQueue.main.async(execute: {
                 SKActivityIndicator.dismiss()
             })
-            do {
-                
-                guard let data = data else { return }
-                guard let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: AnyObject] else { return }
-                print("json:", json)
-               
-                for item in ((((json as NSDictionary).value(forKey: "response") as! NSDictionary) ).value(forKey: "states") as! NSArray) {
-                    self.countryArr.append(getCountryName.init(name: ((item as! NSDictionary).value(forKey: "state_name") as! String), id: ((item as! NSDictionary).value(forKey: "state_id") as! String)))
+            print(response!)
+            
+            
+            if self.value == "aboutme"{
+                self.btnAboutMe.isHidden = true
+            }
+            else if self.value == "account"{
+                self.btnAccount.isHidden = true
+            }
+            else if self.value == "location"{
+                self.btnLocation.isHidden = true
+            }
+            
+            
+            
+            
+            if let dict = response as? [AnyHashable:Any] {
+                print(dict)
+                if ((dict as NSDictionary).value(forKey: "status") as? String == "100"){
+                    self.profileAPI()
                 }
-                DispatchQueue.main.async(execute: {
-                    self.profileImg.layer.cornerRadius = self.profileImg.frame.size.height / 2
-                    self.profileImg.clipsToBounds = true
-                    let url = URL(string: (((((json as NSDictionary).value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "photo") as! String))
-                    self.profileImg.kf.indicatorType = .activity
-                    self.profileImg.kf.setImage(with: url,placeholder: nil)
-                    self.lblEmail.text = (((((json as NSDictionary).value(forKey: "response") as! NSDictionary) ).value(forKey: "user") as! NSDictionary).value(forKey: "email") as! String)
-                    self.lblFullName.text = (((((json as NSDictionary).value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "name") as! String)
-                    self.textAboutme.text = (((((json as NSDictionary).value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "description") as! String)
-                    self.textEmail.text = (((((json as NSDictionary).value(forKey: "response") as! NSDictionary) ).value(forKey: "user") as! NSDictionary).value(forKey: "email") as! String)
-                    self.textFullNamel.text = (((((json as NSDictionary).value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "name") as! String)
-                    self.textAdd1.text = (((((json as NSDictionary).value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "address") as! String)
-                    self.textadd2.text = (((((json as NSDictionary).value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "address2") as! String)
-                    self.textCity.text = (((((json as NSDictionary).value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "city_id") as! String)
-                    if (((((response)?.value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "state_id") as! String) == "" {
-                    }
-                    else{
-                        for section in 0...self.countryArr.count - 1 {
-                            
-                            if (((((response)?.value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "state_id") as! String) == self.countryArr[section].id{
-                                self.textState.text = self.countryArr[section].name
-                            }
-                        }
-                    }
-                    self.textPhonecell.text = (((((json as NSDictionary).value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "phone") as! String)
-                    self.textPhonework.text = (((((json as NSDictionary).value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "phone_work") as! String)
-                    self.textPhonechome.text = (((((json as NSDictionary).value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "phone_home") as! String)
-                    self.textFax.text = (((((json as NSDictionary).value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "zip_code") as! String)
-                    self.textZipcode.text = (((((json as NSDictionary).value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "zip_code") as! String)
-                })
-            } catch {
-                print("error:", error)
+            }else{
+                Alert.showAlertMessage(vc: self, titleStr: "Alert!", messageStr: (response?.value(forKey: "error") as! String))
             }
         }
         
-        task.resume()
     }
-    
     //MARK: textFieldValidation Method
     func textFieldValidation()
     {
-        if (self.textState.text?.isEmpty)! {
+        if (self.textCity.text?.isEmpty)! {
+            Alert.showAlertMessage(vc: self, titleStr: "Alert!", messageStr: "Select City")
+        }
+      else  if (self.textState.text?.isEmpty)! {
             Alert.showAlertMessage(vc: self, titleStr: "Alert!", messageStr: "Select State")
         }
     }
@@ -231,25 +325,64 @@ class ProfileViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         return 1
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return self.countryArr.count
+        if select == "state"{
+            return self.fileArr.count
+        }
+        else if select == "city"{
+            return (((self.fileArr ).object(at: self.index) as! NSDictionary).value(forKey: "state_and_city") as! NSArray).count
+        }
+        return 0
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return self.countryArr[row].name
+        if select == "state" {
+            return ((self.fileArr ).object(at: row) as! NSDictionary).value(forKey: "state_name") as? String
+        }
+        else if select == "city" {
+            return (((((self.fileArr ).object(at: self.index) as! NSDictionary).value(forKey: "state_and_city") as! NSArray).object(at: row) as! NSDictionary).value(forKey: "city_name") as! String)
+        }
+        return nil
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.textState.text = self.countryArr[row].name
+        
+        if select == "state" {
+            self.index = row
+            self.textState.text = ((self.fileArr ).object(at: row) as! NSDictionary).value(forKey: "state_name") as? String
+            self.stateID = (((self.fileArr ).object(at: row) as! NSDictionary).value(forKey: "state_id") as? String)!
+        }
+        else if select == "city" {
+            self.textCity.text = (((((self.fileArr ).object(at: self.index) as! NSDictionary).value(forKey: "state_and_city") as! NSArray).object(at: row) as! NSDictionary).value(forKey: "city_name") as! String)
+            self.cityID = (((((self.fileArr ).object(at: self.index) as! NSDictionary).value(forKey: "state_and_city") as! NSArray).object(at: row) as! NSDictionary).value(forKey: "city_id") as! String)
+        }
     }
     //MARK:- TextFiled Delegate
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        self.pickUp(self.textState)
+        
+        if textField == self.textState {
+            self.pickUp(self.textState)
+            select = "state"
+        }
+        else  if textField == self.textCity {
+            self.pickUp(self.textCity)
+            select = "city"
+        }
     }
     
     //MARK:- Button
     @objc func doneClick() {
-        self.textState.resignFirstResponder()
+        if select == "state" {
+            self.textState.resignFirstResponder()
+        }
+        else  if select == "city" {
+            self.textCity.resignFirstResponder()
+        }
     }
     @objc func cancelClick() {
-        self.textState.resignFirstResponder()
+        if select == "state" {
+            self.textState.resignFirstResponder()
+        }
+        else  if select == "city" {
+            self.textCity.resignFirstResponder()
+        }
     }
     @IBAction func chooseProfilePicBtnClicked(sender: AnyObject) {
         let alert:UIAlertController=UIAlertController(title: "Choose Image", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
