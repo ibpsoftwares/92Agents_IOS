@@ -13,12 +13,18 @@ import QuartzCore
 internal final class LNSideMenuView: UIView, UIScrollViewDelegate {
   
   // MARK: Constants
+  fileprivate let isPlus = UIScreen.main.bounds.width >= 414
+  fileprivate let isX = UIScreen.main.bounds.height >= 812
   fileprivate let kNumberDefaultItemHeight: CGFloat = 60
   fileprivate let kNumberDefaultSpace: CGFloat = 30
-  fileprivate let kNumberDefaultDistance: CGFloat = 40
+  fileprivate var kNumberDefaultDistance: CGFloat {
+    return isPlus ? 40 : 30
+  }
   fileprivate let kNumberDurationAnimation: TimeInterval = 0.25
   fileprivate let kNumberDefaultItemsHoziConstant: Int = 2
-  fileprivate let kNumberAriProg: Int = 10
+  fileprivate var kNumberAriProg: Int {
+    return isX || (isPlus && isX) ? 8 : 10
+  }
   fileprivate let kNumberVelocityConstant: CGFloat = 60
   
   // MARK: Variables
@@ -50,7 +56,7 @@ internal final class LNSideMenuView: UIView, UIScrollViewDelegate {
   var titleColor = LNColor.title.color
   
   // MARK: Components
-  fileprivate var menusScrollView: UIScrollView! = UIScrollView()
+  fileprivate var menuScrollView = UIScrollView()
   fileprivate var panRecognizer: UIPanGestureRecognizer?
   fileprivate var sourceView: UIView?
   fileprivate var currentItem: UIView?
@@ -104,7 +110,7 @@ internal final class LNSideMenuView: UIView, UIScrollViewDelegate {
     
     // Drawing a background view
     self.draw(_:) |> self.frame
-    currentItem = menusScrollView.viewWithTag |> indexOfDefaultCellHighlight
+    currentItem = menuScrollView.viewWithTag |> indexOfDefaultCellHighlight
     
     // Add self to parent view
     sourceView.addSubview |> self
@@ -112,29 +118,29 @@ internal final class LNSideMenuView: UIView, UIScrollViewDelegate {
     
   }
   
-  func refreshMenuWithFrame(_ frame: CGRect, isChanged: Bool) {
+  func refreshMenuWithFrame(_ frame: CGRect, translucent: Bool) {
     // Clear drawn shape in self
     clearDrawRect(self.frame)
     // Update height
     self.height = frame.height
     // Re-draw shape in self
     draw(self.frame)
-    // Update x position of scrollview
-    let distanceToTop = isChanged ? navigationBarHeight : kNumberDefaultSpace
-    self.menusScrollView.y = distanceToTop
+    // Update y position of scrollview
+    let distanceToTop = translucent ? kNavBarHeight : kNumberDefaultSpace
+    self.menuScrollView.y = 12 + distanceToTop
   }
   
   func refresh() {
     // Remove all current items
-    menusScrollView.subviews.forEach{ $0.removeFromSuperview() }
+    menuScrollView.subviews.forEach{ $0.removeFromSuperview() }
     // Reinit menus view with the new list of items
     initialItems(currentPosition == .right)
   }
   
   // Forcing stop scrolling scrollview
   func killScrolling() {
-    let offset = menusScrollView.contentOffset
-    menusScrollView.setContentOffset(offset, animated: false)
+    let offset = menuScrollView.contentOffset
+    menuScrollView.setContentOffset(offset, animated: false)
   }
   
   /**
@@ -142,11 +148,11 @@ internal final class LNSideMenuView: UIView, UIScrollViewDelegate {
    */
   fileprivate func initializeMenuScrollView(_ isRight: Bool) {
     // Config menu scrollview
-    menusScrollView.delegate = self
-    menusScrollView.isScrollEnabled = true
-    menusScrollView.backgroundColor = UIColor.clear
-    menusScrollView.showsVerticalScrollIndicator = false
-    menusScrollView.showsHorizontalScrollIndicator = false
+    menuScrollView.delegate = self
+    menuScrollView.isScrollEnabled = true
+    menuScrollView.backgroundColor = UIColor.clear
+    menuScrollView.showsVerticalScrollIndicator = false
+    menuScrollView.showsHorizontalScrollIndicator = false
     
     // Calculate total cells be able displayed on screen
     
@@ -164,16 +170,17 @@ internal final class LNSideMenuView: UIView, UIScrollViewDelegate {
     
     totalCells = items.count
     // The number of items on screen is always an odd, because it helps to calculate frames of items more easier and cooler
-    if totalCellOnScreen % 2 == 0 && totalCells > totalCellOnScreen {
+    if totalCellOnScreen % 2 == 0 && totalCells >= totalCellOnScreen {
       totalCellOnScreen -= 1
+      frame.height -= kNumberDefaultItemHeight
     }
     // CurrentIndex is presented for index of item at center of screen
     currentIndex = Int(totalCellOnScreen/2)
     index = currentIndex
     // Calculate frame of scrollview
-    frame.y = kNumberDefaultSpace
+    frame.y = kNumberDefaultSpace + (space - frame.height) / 2
     frame.x = isRight ? kNumberDefaultDistance : 0
-    menusScrollView.frame = frame
+    menuScrollView.frame = frame
   }
   
   /**
@@ -209,8 +216,7 @@ internal final class LNSideMenuView: UIView, UIScrollViewDelegate {
       let dest = abs(index-currentIndex)
       let sum = (0..<dest).reduce(0, { $0 + $1*kNumberAriProg })
       let originX = (right ? 1 : -1) * CGFloat(sum + kNumberDefaultItemsHoziConstant*dest)
-      print(dest, sum, originX)
-      let itemFrame = CGRect(x: originX, y: CGFloat(index*Int(kNumberDefaultItemHeight)), width: menusScrollView.width, height: kNumberDefaultItemHeight)
+      let itemFrame = CGRect(x: originX, y: CGFloat(index*Int(kNumberDefaultItemHeight)), width: menuScrollView.width, height: kNumberDefaultItemHeight)
       
       // Initial item by index
       let itemView = LNItemView()
@@ -221,12 +227,12 @@ internal final class LNSideMenuView: UIView, UIScrollViewDelegate {
       tapGesture.numberOfTapsRequired = 1
       itemView.addGestureRecognizer |> tapGesture
       // Add item to scrollview
-      self.menusScrollView.addSubview |> itemView
+      self.menuScrollView.addSubview |> itemView
       // Cache list of items
       views.append(itemView)
     }
-    menusScrollView.contentSize = CGSize(width: menusScrollView.width, height: CGFloat(totalCells*Int(kNumberDefaultItemHeight)))
-    self.addSubview |> self.menusScrollView
+    menuScrollView.contentSize = CGSize(width: menuScrollView.width, height: CGFloat(totalCells*Int(kNumberDefaultItemHeight)))
+    self.addSubview |> self.menuScrollView
   }
   
   // MARK: Action handler functions
@@ -296,7 +302,7 @@ internal final class LNSideMenuView: UIView, UIScrollViewDelegate {
    Update item frame if it's current item
    */
   fileprivate func updateItemViewWidth(_ currentView: LNItemView, speed: CGFloat) {
-    animateUpdateView { return 0 } |> (currentView, speed)
+    animateUpdateView { return 0 }(currentView, speed)
   }
   
   /**
@@ -308,7 +314,7 @@ internal final class LNSideMenuView: UIView, UIScrollViewDelegate {
       let sum = (0..<dest).reduce(0, {$0 + $1*self.kNumberAriProg})
       let originX = self.currentPosition == .right ? CGFloat(sum + 2*dest) : -CGFloat(sum + self.kNumberDefaultItemsHoziConstant*dest)
       return originX
-    } |> (itemView, speed)
+    }(itemView, speed)
   }
   
   fileprivate func animateUpdateView<A: UIView>(_ calculateX: () -> CGFloat) -> (A, CGFloat) -> () {
@@ -334,7 +340,7 @@ internal final class LNSideMenuView: UIView, UIScrollViewDelegate {
     // Check if the animation was prepared before then performing animation
     if prepared {
       // Animate
-      var startIdx: Int = Int(floor(menusScrollView.contentOffset.y / (views.first?.height ?? 1)))
+      var startIdx: Int = Int(floor(menuScrollView.contentOffset.y / (views.first?.height ?? 1)))
       if 0..<views.count ~= startIdx {
         delay = 0
         startIdx = startIdx == 0 ? 0 : startIdx - 1

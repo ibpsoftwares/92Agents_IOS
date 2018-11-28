@@ -14,6 +14,8 @@ class AgentDetailTableViewCell: UITableViewCell {
       @IBOutlet var lblDate: UILabel!
       @IBOutlet var lblOrgName: UILabel!
       @IBOutlet var lblDetail: UILabel!
+      @IBOutlet var btnEdit: UIButton!
+      @IBOutlet var btnDelete: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

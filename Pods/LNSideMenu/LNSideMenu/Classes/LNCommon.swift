@@ -12,7 +12,9 @@ import ObjectiveC
 // MARK: Global variables
 internal let screenHeight = UIScreen.main.bounds.height
 internal let screenWidth = UIScreen.main.bounds.width
-internal let navigationBarHeight: CGFloat = 64
+internal var kNavBarHeight: CGFloat {
+    return UIApplication.shared.statusBarFrame.size.height + ([.landscapeRight, .landscapeLeft].contains(UIApplication.shared.statusBarOrientation) ? 32 : 44)
+}
 internal let kDistanceItemToRight: CGFloat = 18
 
 // MARK: Typealias
@@ -74,8 +76,8 @@ public enum LNColor {
 // MARK: Protocols
 
 public protocol LNSideMenuProtocol {
-  var sideMenu: LNSideMenu?{get}
-  var sideMenuAnimationType: LNSideMenuAnimation {get set}
+  var menu: LNSideMenu?{get}
+  var animationType: LNSideMenuAnimation {get set}
   func setContentViewController(_ contentViewController: UIViewController)
 }
 
@@ -94,7 +96,7 @@ internal protocol LNSMDelegate: class {
 
 public protocol LNSideMenuManager {
   
-  mutating func sideMenuController()-> LNSideMenuProtocol?
+  mutating func instance()-> LNSideMenuProtocol?
   mutating func toggleSideMenuView()
   mutating func hideSideMenuView()
   mutating func showSideMenuView()

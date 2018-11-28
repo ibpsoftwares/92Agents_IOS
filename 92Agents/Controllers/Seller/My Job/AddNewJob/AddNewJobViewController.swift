@@ -65,7 +65,7 @@ class AddNewJobViewController: UIViewController , UIPickerViewDelegate, UIPicker
             print(response!)
             for item in (response!.value(forKey: "states") as! NSArray) {
                 print(item)
-                self.countryArr.append(getCountryName.init(name: ((item as! NSDictionary).value(forKey: "state_name") as! String), id: ((item as! NSDictionary).value(forKey: "state_id") as! String)))
+                self.countryArr.append(getCountryName.init(name: ((item as! NSDictionary).value(forKey: "state_name") as! String), id: String((item as! NSDictionary).value(forKey: "state_id") as! NSInteger)))
             }
         })
     }

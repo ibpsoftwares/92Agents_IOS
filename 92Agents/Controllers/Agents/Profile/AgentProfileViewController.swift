@@ -38,7 +38,7 @@ class AgentProfileViewController: UIViewController, UIPickerViewDelegate, UIPick
         // Do any additional setup after loading the view.
         self.profileImg.layer.cornerRadius = self.profileImg.frame.size.height / 2
         self.profileImg.clipsToBounds = true
-        bookmarkAPI()
+        agentProfileAPI()
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,7 +49,7 @@ class AgentProfileViewController: UIViewController, UIPickerViewDelegate, UIPick
         self.navigationController?.popViewController(animated: true)
     }
     //MARK: bookmarkAPI Methods
-    func bookmarkAPI(){
+    func agentProfileAPI(){
         SKActivityIndicator.spinnerColor(UIColor.darkGray)
         SKActivityIndicator.show("Loading...")
         let parameters: Parameters = [
@@ -74,9 +74,9 @@ class AgentProfileViewController: UIViewController, UIPickerViewDelegate, UIPick
             
             if let dict = response as? [AnyHashable:Any] {
                 print(dict)
-                for item in ((((response)?.value(forKey: "response") as! NSDictionary) ).value(forKey: "states") as! NSArray) {
-                    self.countryArr.append(getCountryName.init(name: ((item as! NSDictionary).value(forKey: "state_name") as! String), id: ((item as! NSDictionary).value(forKey: "state_id") as! String)))
-                }
+//                for item in ((((response)?.value(forKey: "response") as! NSDictionary) ).value(forKey: "states") as! NSArray) {
+//                    self.countryArr.append(getCountryName.init(name: ((item as! NSDictionary).value(forKey: "state_name") as! String), id: ((item as! NSDictionary).value(forKey: "state_id") as! String)))
+//                }
                 DispatchQueue.main.async(execute: {
                     self.profileImg.layer.cornerRadius = self.profileImg.frame.size.height / 2
                     self.profileImg.clipsToBounds = true
@@ -95,12 +95,12 @@ class AgentProfileViewController: UIViewController, UIPickerViewDelegate, UIPick
                     if (((((response)?.value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "state_id") as! String) == "" {
                     }
                     else{
-                        for section in 0...self.countryArr.count - 1 {
-                            
-                            if (((((response)?.value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "state_id") as! String) == self.countryArr[section].id{
-                                self.textState.text = self.countryArr[section].name
-                            }
-                        }
+//                        for section in 0...self.countryArr.count - 1 {
+//                            
+//                            if (((((response)?.value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "state_id") as! String) == self.countryArr[section].id{
+//                                self.textState.text = self.countryArr[section].name
+//                            }
+//                        }
                     }
                     self.textPhonecell.text = (((((response)?.value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "phone") as! String)
                     
@@ -199,7 +199,7 @@ class AgentProfileViewController: UIViewController, UIPickerViewDelegate, UIPick
                     self.textFullNamel.text = (((((json as NSDictionary).value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "name") as! String)
                     self.textAdd1.text = (((((json as NSDictionary).value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "address") as! String)
                     self.textadd2.text = (((((json as NSDictionary).value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "address2") as! String)
-                    self.textCity.text = (((((json as NSDictionary).value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "city_id") as! String)
+                    self.textCity.text = ((((((json as NSDictionary).value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "city") as! NSDictionary).value(forKey: "city_name") as! String)
                     if (((((response)?.value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "state_id") as! String) == "" {
                     }
                     else{

@@ -22,7 +22,7 @@ class LeftMenuTableViewController: UIViewController {
     let kCellIdentifier = "menuCell"
     let items = ["My Job","Find Agents","Profile","Test","Notes", "Bookmarks","Setting","Logout"]
     let images = ["myjob","findAgent","user","test","notes","bookmark1","profile","logout"]
-     let agentItems = ["My Job","Connected Jobs","Find Jobs","Profile","Tests", "Notes","Bookmark","Questions"]
+     let agentItems = ["My Job","Connected Jobs","Find Jobs","Profile","Tests", "Notes","Bookmark","Others Resources","Logout"]
     weak var delegate: LeftMenuDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -123,27 +123,31 @@ extension LeftMenuTableViewController: UITableViewDelegate {
                 self.navigationController?.pushViewController(addressVC, animated: true)
             }
             else if indexPath.row == 1{
-                let agentVC = UIStoryboard(name: "Agents", bundle: nil).instantiateViewController(withIdentifier: "BuyerFindAgentViewController") as! BuyerFindAgentViewController
+                let agentVC = UIStoryboard(name: "Agents", bundle: nil).instantiateViewController(withIdentifier: "ConnectedJobsViewController") as! ConnectedJobsViewController
                 self.navigationController?.pushViewController(agentVC, animated: true)
             }
             else if indexPath.row == 2{
-                let favVC = UIStoryboard(name: "Agents", bundle: nil).instantiateViewController(withIdentifier: "BuyerProfileViewController") as! BuyerProfileViewController
+                let favVC = UIStoryboard(name: "Agents", bundle: nil).instantiateViewController(withIdentifier: "AgentsFindAgentViewController") as! AgentsFindAgentViewController
                 self.navigationController?.pushViewController(favVC, animated: true)
             }
             else if indexPath.row == 3{
-                let favVC = UIStoryboard(name: "Agents", bundle: nil).instantiateViewController(withIdentifier: "AgentProfileViewController") as! AgentProfileViewController
+                let favVC = UIStoryboard(name: "Agents", bundle: nil).instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
                 self.navigationController?.pushViewController(favVC, animated: true)
             }
             else if indexPath.row == 4{
-                let aboutVC = UIStoryboard(name: "Agents", bundle: nil).instantiateViewController(withIdentifier: "BuyerNotesViewController") as! BuyerNotesViewController
+                let aboutVC = UIStoryboard(name: "Agents", bundle: nil).instantiateViewController(withIdentifier: "AgentTestsViewController") as! AgentTestsViewController
                 self.navigationController?.pushViewController(aboutVC, animated: true)
             }
             else if indexPath.row == 5{
-                let bookmarkVC = UIStoryboard(name: "Agents", bundle: nil).instantiateViewController(withIdentifier: "BuyerBookMarkViewController") as! BuyerBookMarkViewController
+                let bookmarkVC = UIStoryboard(name: "Agents", bundle: nil).instantiateViewController(withIdentifier: "AgentNotesViewController") as! AgentNotesViewController
                 self.navigationController?.pushViewController(bookmarkVC, animated: true)
             }
             else if indexPath.row == 6{
-                let loginVC = UIStoryboard(name: "Agents", bundle: nil).instantiateViewController(withIdentifier: "SettingViewController") as! SettingViewController
+                let loginVC = UIStoryboard(name: "Agents", bundle: nil).instantiateViewController(withIdentifier: "AgentBookmarkViewController") as! AgentBookmarkViewController
+                self.navigationController?.pushViewController(loginVC, animated: true)
+            }
+            else if indexPath.row == 7{
+                let loginVC = UIStoryboard(name: "Agents", bundle: nil).instantiateViewController(withIdentifier: "OthersResourcesViewController") as! OthersResourcesViewController
                 self.navigationController?.pushViewController(loginVC, animated: true)
             }
         }
@@ -161,7 +165,7 @@ extension LeftMenuTableViewController: UITableViewDelegate {
                 self.navigationController?.pushViewController(favVC, animated: true)
             }
             else if indexPath.row == 3{
-                let favVC = UIStoryboard(name: "Agent", bundle: nil).instantiateViewController(withIdentifier: "AgentProfileViewController") as! AgentProfileViewController
+                let favVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SellerTestViewController") as! SellerTestViewController
                 self.navigationController?.pushViewController(favVC, animated: true)
             }
             else if indexPath.row == 4{

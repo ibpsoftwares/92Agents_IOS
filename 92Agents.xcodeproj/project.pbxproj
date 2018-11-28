@@ -16,8 +16,10 @@
 		18006B3C20D8B32F00BE78D9 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18006B3B20D8B32F00BE78D9 /* RegistrationViewController.swift */; };
 		18006B3F20D8B35600BE78D9 /* AgentAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18006B3E20D8B35600BE78D9 /* AgentAddressViewController.swift */; };
 		18006B4120D8B55800BE78D9 /* SelectRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18006B4020D8B55800BE78D9 /* SelectRegistrationViewController.swift */; };
+		18024D74219C14CE00888EE9 /* CertificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18024D73219C14CC00888EE9 /* CertificationTableViewCell.swift */; };
 		18071442213F8D6A00886214 /* AgentMyJobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18071441213F8D6900886214 /* AgentMyJobViewController.swift */; };
 		18071444213FA6E400886214 /* AgentMyJobTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18071443213FA6E400886214 /* AgentMyJobTableViewCell.swift */; };
+		181FD4DA2190507000DF5F65 /* SalesHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181FD4D92190507000DF5F65 /* SalesHistoryTableViewCell.swift */; };
 		1823C4CF20F46A48006C1568 /* EditJobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1823C4CE20F46A48006C1568 /* EditJobViewController.swift */; };
 		1835F70F20D22A7300EDF812 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1835F70E20D22A7300EDF812 /* AppDelegate.swift */; };
 		1835F71120D22A7300EDF812 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1835F71020D22A7300EDF812 /* ViewController.swift */; };
@@ -34,6 +36,8 @@
 		1835F75220D269CC00EDF812 /* SellerRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1835F75120D269CC00EDF812 /* SellerRegistrationViewController.swift */; };
 		183704F920F6169800D89D2A /* AgentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183704F820F6169800D89D2A /* AgentDetailViewController.swift */; };
 		183704FB20F616C800D89D2A /* AgentDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183704FA20F616C800D89D2A /* AgentDetailTableViewCell.swift */; };
+		1839B0C8214B695600BE0C64 /* ConnectedJobsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1839B0C7214B695600BE0C64 /* ConnectedJobsViewController.swift */; };
+		18448AB221A3C88900959233 /* UploadNewDocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18448AB121A3C88900959233 /* UploadNewDocumentViewController.swift */; };
 		1844D8E520DCB5C800F4F857 /* SellerPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1844D8E420DCB5C800F4F857 /* SellerPostViewController.swift */; };
 		1844D8E820DCD95500F4F857 /* BuyerPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1844D8E720DCD95500F4F857 /* BuyerPostViewController.swift */; };
 		1844D8EB20DCE78800F4F857 /* AgentPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1844D8EA20DCE78800F4F857 /* AgentPostViewController.swift */; };
@@ -43,6 +47,7 @@
 		1844D8F720DCF0CC00F4F857 /* DashBoardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1844D8F520DCF0CC00F4F857 /* DashBoardTableViewCell.swift */; };
 		1844D8F820DCF0CC00F4F857 /* DashBoardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1844D8F620DCF0CC00F4F857 /* DashBoardTableViewCell.xib */; };
 		184AD3AA20E737EC00C00499 /* AddNewJobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184AD3A920E737EB00C00499 /* AddNewJobViewController.swift */; };
+		184D4D28216C5D9600FEFA75 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184D4D27216C5D9600FEFA75 /* MainViewController.swift */; };
 		185301FC210ADC4E0088BEA1 /* SharedProposalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185301FB210ADC4E0088BEA1 /* SharedProposalViewController.swift */; };
 		185301FF210ADC710088BEA1 /* SharedProposalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185301FD210ADC710088BEA1 /* SharedProposalCollectionViewCell.swift */; };
 		18530200210ADC710088BEA1 /* SharedProposalCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 185301FE210ADC710088BEA1 /* SharedProposalCollectionViewCell.xib */; };
@@ -52,8 +57,13 @@
 		18532F0520E4FF7A0048C76D /* SellerBoolmarlTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18532F0320E4FF7A0048C76D /* SellerBoolmarlTableViewCell.swift */; };
 		18532F0620E4FF7A0048C76D /* SellerBoolmarlTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18532F0420E4FF7A0048C76D /* SellerBoolmarlTableViewCell.xib */; };
 		1858B98320D75EDE006196AC /* SellerAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1858B98220D75EDE006196AC /* SellerAddressViewController.swift */; };
+		1859875C21917070000A6703 /* ProfessLanguageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1859875B21917070000A6703 /* ProfessLanguageTableViewCell.swift */; };
+		185C3B402175AE2F00399877 /* DocumentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185C3B3F2175AE2F00399877 /* DocumentTableViewCell.swift */; };
 		185CE6112106EE540055AD45 /* LanguageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185CE60F2106EE540055AD45 /* LanguageTableViewCell.swift */; };
 		185CE6122106EE540055AD45 /* LanguageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 185CE6102106EE540055AD45 /* LanguageTableViewCell.xib */; };
+		185E22D9214B91AA007C450B /* AgentTestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185E22D8214B91AA007C450B /* AgentTestsViewController.swift */; };
+		1860D759216B1C93005C91B5 /* AgentNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1860D758216B1C93005C91B5 /* AgentNotesViewController.swift */; };
+		1860D75C216B1F8D005C91B5 /* AgentBookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1860D75B216B1F8D005C91B5 /* AgentBookmarkViewController.swift */; };
 		1865967720EDF17B00CF8239 /* postOverviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1865967620EDF17B00CF8239 /* postOverviewTableViewCell.swift */; };
 		1865967920EDF19600CF8239 /* featureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1865967820EDF19600CF8239 /* featureTableViewCell.swift */; };
 		1865967B20EDF1BD00CF8239 /* seletedAgentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1865967A20EDF1BD00CF8239 /* seletedAgentTableViewCell.swift */; };
@@ -85,7 +95,17 @@
 		18BAF15B20ECDA4800EE0913 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18BAF15620ECDA4800EE0913 /* Info.plist */; };
 		18BAF15C20ECDA4800EE0913 /* TagListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BAF15820ECDA4800EE0913 /* TagListView.swift */; };
 		18BAF15D20ECDA4800EE0913 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BAF15920ECDA4800EE0913 /* TagView.swift */; };
+		18BBB18221ABFF5E003DC59F /* SurveyQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BBB18121ABFF5E003DC59F /* SurveyQuestionViewController.swift */; };
+		18C9EB6521A2830900790662 /* OthersResourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C9EB6421A2830900790662 /* OthersResourcesViewController.swift */; };
+		18C9EB6721A28B8E00790662 /* ProposalsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C9EB6621A28B8E00790662 /* ProposalsViewController.swift */; };
+		18CFD000216C6311009F2B9F /* ProfileAgentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CFCFFF216C6311009F2B9F /* ProfileAgentViewController.swift */; };
+		18CFD002216C6336009F2B9F /* PersonalBioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CFD001216C6336009F2B9F /* PersonalBioViewController.swift */; };
+		18CFD004216C6344009F2B9F /* ProfessionalBioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CFD003216C6344009F2B9F /* ProfessionalBioViewController.swift */; };
+		18D015A721AC127F006A99F2 /* SurveyQuesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D015A621AC127F006A99F2 /* SurveyQuesTableViewCell.swift */; };
+		18E2D86F21A5257B00976E33 /* AgentQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E2D86E21A5257B00976E33 /* AgentQuestionViewController.swift */; };
 		18E6166F213E62A400610EB4 /* AgentProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E6166E213E62A300610EB4 /* AgentProfileViewController.swift */; };
+		18EEA11B2164979F00E3E850 /* ConnectedJobDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EEA11A2164979F00E3E850 /* ConnectedJobDetailViewController.swift */; };
+		18EEA11E2164C76200E3E850 /* AgentsFindAgentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EEA11D2164C76200E3E850 /* AgentsFindAgentViewController.swift */; };
 		18F2A71120E6220700FB266F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F2A71020E6220700FB266F /* ProfileViewController.swift */; };
 		18F2A71420E6390200FB266F /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F2A71320E6390200FB266F /* SettingViewController.swift */; };
 		18F2A71720E6451200FB266F /* MyJobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F2A71620E6451200FB266F /* MyJobViewController.swift */; };
@@ -124,8 +144,10 @@
 		18006B3B20D8B32F00BE78D9 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		18006B3E20D8B35600BE78D9 /* AgentAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentAddressViewController.swift; sourceTree = "<group>"; };
 		18006B4020D8B55800BE78D9 /* SelectRegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRegistrationViewController.swift; sourceTree = "<group>"; };
+		18024D73219C14CC00888EE9 /* CertificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationTableViewCell.swift; sourceTree = "<group>"; };
 		18071441213F8D6900886214 /* AgentMyJobViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentMyJobViewController.swift; sourceTree = "<group>"; };
 		18071443213FA6E400886214 /* AgentMyJobTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentMyJobTableViewCell.swift; sourceTree = "<group>"; };
+		181FD4D92190507000DF5F65 /* SalesHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalesHistoryTableViewCell.swift; sourceTree = "<group>"; };
 		1823C4CE20F46A48006C1568 /* EditJobViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditJobViewController.swift; sourceTree = "<group>"; };
 		1835F70B20D22A7300EDF812 /* 92Agents.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 92Agents.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1835F70E20D22A7300EDF812 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -148,6 +170,8 @@
 		1835F75120D269CC00EDF812 /* SellerRegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerRegistrationViewController.swift; sourceTree = "<group>"; };
 		183704F820F6169800D89D2A /* AgentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentDetailViewController.swift; sourceTree = "<group>"; };
 		183704FA20F616C800D89D2A /* AgentDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentDetailTableViewCell.swift; sourceTree = "<group>"; };
+		1839B0C7214B695600BE0C64 /* ConnectedJobsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedJobsViewController.swift; sourceTree = "<group>"; };
+		18448AB121A3C88900959233 /* UploadNewDocumentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadNewDocumentViewController.swift; sourceTree = "<group>"; };
 		1844D8E420DCB5C800F4F857 /* SellerPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerPostViewController.swift; sourceTree = "<group>"; };
 		1844D8E720DCD95500F4F857 /* BuyerPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerPostViewController.swift; sourceTree = "<group>"; };
 		1844D8EA20DCE78800F4F857 /* AgentPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentPostViewController.swift; sourceTree = "<group>"; };
@@ -157,6 +181,7 @@
 		1844D8F520DCF0CC00F4F857 /* DashBoardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashBoardTableViewCell.swift; sourceTree = "<group>"; };
 		1844D8F620DCF0CC00F4F857 /* DashBoardTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashBoardTableViewCell.xib; sourceTree = "<group>"; };
 		184AD3A920E737EB00C00499 /* AddNewJobViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewJobViewController.swift; sourceTree = "<group>"; };
+		184D4D27216C5D9600FEFA75 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		185301FB210ADC4E0088BEA1 /* SharedProposalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedProposalViewController.swift; sourceTree = "<group>"; };
 		185301FD210ADC710088BEA1 /* SharedProposalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedProposalCollectionViewCell.swift; sourceTree = "<group>"; };
 		185301FE210ADC710088BEA1 /* SharedProposalCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SharedProposalCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -166,8 +191,13 @@
 		18532F0320E4FF7A0048C76D /* SellerBoolmarlTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerBoolmarlTableViewCell.swift; sourceTree = "<group>"; };
 		18532F0420E4FF7A0048C76D /* SellerBoolmarlTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SellerBoolmarlTableViewCell.xib; sourceTree = "<group>"; };
 		1858B98220D75EDE006196AC /* SellerAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerAddressViewController.swift; sourceTree = "<group>"; };
+		1859875B21917070000A6703 /* ProfessLanguageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfessLanguageTableViewCell.swift; sourceTree = "<group>"; };
+		185C3B3F2175AE2F00399877 /* DocumentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentTableViewCell.swift; sourceTree = "<group>"; };
 		185CE60F2106EE540055AD45 /* LanguageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageTableViewCell.swift; sourceTree = "<group>"; };
 		185CE6102106EE540055AD45 /* LanguageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LanguageTableViewCell.xib; sourceTree = "<group>"; };
+		185E22D8214B91AA007C450B /* AgentTestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentTestsViewController.swift; sourceTree = "<group>"; };
+		1860D758216B1C93005C91B5 /* AgentNotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentNotesViewController.swift; sourceTree = "<group>"; };
+		1860D75B216B1F8D005C91B5 /* AgentBookmarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentBookmarkViewController.swift; sourceTree = "<group>"; };
 		1865967620EDF17B00CF8239 /* postOverviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = postOverviewTableViewCell.swift; sourceTree = "<group>"; };
 		1865967820EDF19600CF8239 /* featureTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = featureTableViewCell.swift; sourceTree = "<group>"; };
 		1865967A20EDF1BD00CF8239 /* seletedAgentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = seletedAgentTableViewCell.swift; sourceTree = "<group>"; };
@@ -200,7 +230,17 @@
 		18BAF15720ECDA4800EE0913 /* TagListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagListView.h; sourceTree = "<group>"; };
 		18BAF15820ECDA4800EE0913 /* TagListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagListView.swift; sourceTree = "<group>"; };
 		18BAF15920ECDA4800EE0913 /* TagView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
+		18BBB18121ABFF5E003DC59F /* SurveyQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyQuestionViewController.swift; sourceTree = "<group>"; };
+		18C9EB6421A2830900790662 /* OthersResourcesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OthersResourcesViewController.swift; sourceTree = "<group>"; };
+		18C9EB6621A28B8E00790662 /* ProposalsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProposalsViewController.swift; sourceTree = "<group>"; };
+		18CFCFFF216C6311009F2B9F /* ProfileAgentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAgentViewController.swift; sourceTree = "<group>"; };
+		18CFD001216C6336009F2B9F /* PersonalBioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalBioViewController.swift; sourceTree = "<group>"; };
+		18CFD003216C6344009F2B9F /* ProfessionalBioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfessionalBioViewController.swift; sourceTree = "<group>"; };
+		18D015A621AC127F006A99F2 /* SurveyQuesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyQuesTableViewCell.swift; sourceTree = "<group>"; };
+		18E2D86E21A5257B00976E33 /* AgentQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentQuestionViewController.swift; sourceTree = "<group>"; };
 		18E6166E213E62A300610EB4 /* AgentProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentProfileViewController.swift; sourceTree = "<group>"; };
+		18EEA11A2164979F00E3E850 /* ConnectedJobDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedJobDetailViewController.swift; sourceTree = "<group>"; };
+		18EEA11D2164C76200E3E850 /* AgentsFindAgentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentsFindAgentViewController.swift; sourceTree = "<group>"; };
 		18F2A71020E6220700FB266F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		18F2A71320E6390200FB266F /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		18F2A71620E6451200FB266F /* MyJobViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyJobViewController.swift; sourceTree = "<group>"; };
@@ -319,6 +359,7 @@
 				F0CEC65828C6418A211FDCF9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
+			usesTabs = 0;
 		};
 		1835F70C20D22A7300EDF812 /* Products */ = {
 			isa = PBXGroup;
@@ -376,8 +417,8 @@
 			children = (
 				1835F71820D22A7400EDF812 /* Assets.xcassets */,
 				1835F71A20D22A7400EDF812 /* LaunchScreen.storyboard */,
-				18006B3320D8B02000BE78D9 /* Agents.storyboard */,
 				1835F71220D22A7400EDF812 /* Main.storyboard */,
+				18006B3320D8B02000BE78D9 /* Agents.storyboard */,
 				18006B3820D8B24700BE78D9 /* Buyer.storyboard */,
 			);
 			path = View;
@@ -439,6 +480,13 @@
 		1835F74420D22FCA00EDF812 /* Agents */ = {
 			isa = PBXGroup;
 			children = (
+				18C9EB6321A2826200790662 /* Others Resources */,
+				184D4D26216C5D6D00FEFA75 /* MainPager */,
+				1860D75A216B1F6A005C91B5 /* AgentBookmark */,
+				1860D755216B1AC3005C91B5 /* AgentNotes */,
+				18EEA11C2164C73A00E3E850 /* FindAgent */,
+				185E22D7214B9182007C450B /* Tests */,
+				1839B0C6214B692100BE0C64 /* ConnectedJobs */,
 				18071440213F8D2600886214 /* MyJob */,
 				18E6166D213E623100610EB4 /* Profile */,
 				1881EC6020F34FA000FFC795 /* DashBoard */,
@@ -477,6 +525,15 @@
 				185301FA210ADC1D0088BEA1 /* SharedPropossal */,
 			);
 			path = AgentDetail;
+			sourceTree = "<group>";
+		};
+		1839B0C6214B692100BE0C64 /* ConnectedJobs */ = {
+			isa = PBXGroup;
+			children = (
+				1839B0C7214B695600BE0C64 /* ConnectedJobsViewController.swift */,
+				18EEA11A2164979F00E3E850 /* ConnectedJobDetailViewController.swift */,
+			);
+			path = ConnectedJobs;
 			sourceTree = "<group>";
 		};
 		1844D8E320DCB58500F4F857 /* Post */ = {
@@ -525,6 +582,21 @@
 			path = AddNewJob;
 			sourceTree = "<group>";
 		};
+		184D4D26216C5D6D00FEFA75 /* MainPager */ = {
+			isa = PBXGroup;
+			children = (
+				184D4D27216C5D9600FEFA75 /* MainViewController.swift */,
+				18CFCFFF216C6311009F2B9F /* ProfileAgentViewController.swift */,
+				185C3B3F2175AE2F00399877 /* DocumentTableViewCell.swift */,
+				18CFD001216C6336009F2B9F /* PersonalBioViewController.swift */,
+				18CFD003216C6344009F2B9F /* ProfessionalBioViewController.swift */,
+				181FD4D92190507000DF5F65 /* SalesHistoryTableViewCell.swift */,
+				1859875B21917070000A6703 /* ProfessLanguageTableViewCell.swift */,
+				18024D73219C14CC00888EE9 /* CertificationTableViewCell.swift */,
+			);
+			path = MainPager;
+			sourceTree = "<group>";
+		};
 		185301FA210ADC1D0088BEA1 /* SharedPropossal */ = {
 			isa = PBXGroup;
 			children = (
@@ -551,6 +623,31 @@
 				1858B98220D75EDE006196AC /* SellerAddressViewController.swift */,
 			);
 			path = Address;
+			sourceTree = "<group>";
+		};
+		185E22D7214B9182007C450B /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				185E22D8214B91AA007C450B /* AgentTestsViewController.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		1860D755216B1AC3005C91B5 /* AgentNotes */ = {
+			isa = PBXGroup;
+			children = (
+				1860D758216B1C93005C91B5 /* AgentNotesViewController.swift */,
+			);
+			name = AgentNotes;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		1860D75A216B1F6A005C91B5 /* AgentBookmark */ = {
+			isa = PBXGroup;
+			children = (
+				1860D75B216B1F8D005C91B5 /* AgentBookmarkViewController.swift */,
+			);
+			path = AgentBookmark;
 			sourceTree = "<group>";
 		};
 		1865967520EDF11A00CF8239 /* Cell */ = {
@@ -687,12 +784,33 @@
 			path = TagListView;
 			sourceTree = "<group>";
 		};
+		18C9EB6321A2826200790662 /* Others Resources */ = {
+			isa = PBXGroup;
+			children = (
+				18C9EB6421A2830900790662 /* OthersResourcesViewController.swift */,
+				18C9EB6621A28B8E00790662 /* ProposalsViewController.swift */,
+				18448AB121A3C88900959233 /* UploadNewDocumentViewController.swift */,
+				18E2D86E21A5257B00976E33 /* AgentQuestionViewController.swift */,
+				18BBB18121ABFF5E003DC59F /* SurveyQuestionViewController.swift */,
+				18D015A621AC127F006A99F2 /* SurveyQuesTableViewCell.swift */,
+			);
+			path = "Others Resources";
+			sourceTree = "<group>";
+		};
 		18E6166D213E623100610EB4 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
 				18E6166E213E62A300610EB4 /* AgentProfileViewController.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		18EEA11C2164C73A00E3E850 /* FindAgent */ = {
+			isa = PBXGroup;
+			children = (
+				18EEA11D2164C76200E3E850 /* AgentsFindAgentViewController.swift */,
+			);
+			path = FindAgent;
 			sourceTree = "<group>";
 		};
 		18F2A70F20E621DB00FB266F /* Profile */ = {
@@ -760,7 +878,6 @@
 				1835F70820D22A7300EDF812 /* Frameworks */,
 				1835F70920D22A7300EDF812 /* Resources */,
 				671508E0618552D24BD128D4 /* [CP] Embed Pods Frameworks */,
-				5CE6EA4B2275585C20D0C926 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -779,8 +896,6 @@
 				1835F71E20D22A7500EDF812 /* Sources */,
 				1835F71F20D22A7500EDF812 /* Frameworks */,
 				1835F72020D22A7500EDF812 /* Resources */,
-				12197FAA4A4DB7BF0E447D63 /* [CP] Embed Pods Frameworks */,
-				E04102E89F832012AD403557 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -800,8 +915,6 @@
 				1835F72920D22A7500EDF812 /* Sources */,
 				1835F72A20D22A7500EDF812 /* Frameworks */,
 				1835F72B20D22A7500EDF812 /* Resources */,
-				1CDDF991E67B66B6FF287673 /* [CP] Embed Pods Frameworks */,
-				08AFB0AF0699A1D97B1F6841 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -896,66 +1009,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		08AFB0AF0699A1D97B1F6841 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-92AgentsUITests/Pods-92AgentsUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		12197FAA4A4DB7BF0E447D63 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-92AgentsTests/Pods-92AgentsTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		1CDDF991E67B66B6FF287673 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-92AgentsUITests/Pods-92AgentsUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		5CE6EA4B2275585C20D0C926 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-92Agents/Pods-92Agents-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		671508E0618552D24BD128D4 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -970,6 +1023,7 @@
 				"${BUILT_PRODUCTS_DIR}/SKActivityIndicatorView/SKActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/TagListView/TagListView.framework",
 				"${BUILT_PRODUCTS_DIR}/Tags/Tags.framework",
+				"${BUILT_PRODUCTS_DIR}/ViewPager-Swift/ViewPager_Swift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -980,6 +1034,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SKActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TagListView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Tags.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ViewPager_Swift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1040,21 +1095,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E04102E89F832012AD403557 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-92AgentsTests/Pods-92AgentsTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1063,6 +1103,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				186FFA6A20DA0B8900776974 /* AgentForgotPasswordViewController.swift in Sources */,
+				18EEA11E2164C76200E3E850 /* AgentsFindAgentViewController.swift in Sources */,
+				18BBB18221ABFF5E003DC59F /* SurveyQuestionViewController.swift in Sources */,
 				184AD3AA20E737EC00C00499 /* AddNewJobViewController.swift in Sources */,
 				18AF91E320FF3D39002BC235 /* FindPostTableViewCell.swift in Sources */,
 				18532F0520E4FF7A0048C76D /* SellerBoolmarlTableViewCell.swift in Sources */,
@@ -1072,27 +1114,38 @@
 				18A0957220E9EA8600448167 /* SellerNotesTableViewCell.swift in Sources */,
 				18006B3220D8AE0E00BE78D9 /* BuyerAddressViewController.swift in Sources */,
 				1844D8F720DCF0CC00F4F857 /* DashBoardTableViewCell.swift in Sources */,
+				18024D74219C14CE00888EE9 /* CertificationTableViewCell.swift in Sources */,
+				18CFD000216C6311009F2B9F /* ProfileAgentViewController.swift in Sources */,
 				1858B98320D75EDE006196AC /* SellerAddressViewController.swift in Sources */,
 				18F2A71920E64AED00FB266F /* MyJobTableViewCell.swift in Sources */,
 				18F2A71120E6220700FB266F /* ProfileViewController.swift in Sources */,
+				1860D75C216B1F8D005C91B5 /* AgentBookmarkViewController.swift in Sources */,
 				18BAF14B20EC903500EE0913 /* FindAgentTableViewCell.swift in Sources */,
 				18A0957720E9F82500448167 /* SellerTestTableViewCell.swift in Sources */,
 				18BAF15D20ECDA4800EE0913 /* TagView.swift in Sources */,
 				18006B2B20D8AD9700BE78D9 /* BuyerLoginViewController.swift in Sources */,
+				18448AB221A3C88900959233 /* UploadNewDocumentViewController.swift in Sources */,
 				1881EC6220F34FBA00FFC795 /* AgentDashBoardViewController.swift in Sources */,
+				1839B0C8214B695600BE0C64 /* ConnectedJobsViewController.swift in Sources */,
 				1844D8EE20DCE9B600F4F857 /* SellerDashBoardViewController.swift in Sources */,
 				186FFA6820DA0A8500776974 /* BuyerForgotPasswordViewController.swift in Sources */,
 				1881EC6420F36EB600FFC795 /* AgentTableViewCell.swift in Sources */,
 				18FDFABC20DB845000772072 /* Alert.swift in Sources */,
+				181FD4DA2190507000DF5F65 /* SalesHistoryTableViewCell.swift in Sources */,
 				185301FF210ADC710088BEA1 /* SharedProposalCollectionViewCell.swift in Sources */,
 				183704F920F6169800D89D2A /* AgentDetailViewController.swift in Sources */,
 				1835F71120D22A7300EDF812 /* ViewController.swift in Sources */,
 				1881EC5920F33D4600FFC795 /* BuyerNotesViewController.swift in Sources */,
 				186FFA6620DA065800776974 /* SellerForgotViewController.swift in Sources */,
+				185E22D9214B91AA007C450B /* AgentTestsViewController.swift in Sources */,
 				18071444213FA6E400886214 /* AgentMyJobTableViewCell.swift in Sources */,
+				18C9EB6721A28B8E00790662 /* ProposalsViewController.swift in Sources */,
+				18E2D86F21A5257B00976E33 /* AgentQuestionViewController.swift in Sources */,
 				1881EC5620F3392200FFC795 /* BuyerTestsViewController.swift in Sources */,
 				18006B3C20D8B32F00BE78D9 /* RegistrationViewController.swift in Sources */,
+				18CFD004216C6344009F2B9F /* ProfessionalBioViewController.swift in Sources */,
 				18006B4120D8B55800BE78D9 /* SelectRegistrationViewController.swift in Sources */,
+				18EEA11B2164979F00E3E850 /* ConnectedJobDetailViewController.swift in Sources */,
 				1865967F20EDF1EA00CF8239 /* compareAgenTableViewCell.swift in Sources */,
 				1835F75220D269CC00EDF812 /* SellerRegistrationViewController.swift in Sources */,
 				18006B3F20D8B35600BE78D9 /* AgentAddressViewController.swift in Sources */,
@@ -1100,6 +1153,7 @@
 				1835F71720D22A7400EDF812 /* _2Agents.xcdatamodeld in Sources */,
 				18BAF15A20ECDA4800EE0913 /* CloseButton.swift in Sources */,
 				1881EC4E20F31FEB00FFC795 /* BuyerMyJobViewController.swift in Sources */,
+				184D4D28216C5D9600FEFA75 /* MainViewController.swift in Sources */,
 				1881EC4B20F3164900FFC795 /* BuyerDashboardViewController.swift in Sources */,
 				18670BE220EDCEF10027CF75 /* PostDetailViewController.swift in Sources */,
 				1865967920EDF19600CF8239 /* featureTableViewCell.swift in Sources */,
@@ -1110,6 +1164,8 @@
 				1835F74F20D268CD00EDF812 /* SellerLoginViewController.swift in Sources */,
 				1865967720EDF17B00CF8239 /* postOverviewTableViewCell.swift in Sources */,
 				18FDFABE20DB8A3A00772072 /* Model.swift in Sources */,
+				185C3B402175AE2F00399877 /* DocumentTableViewCell.swift in Sources */,
+				1860D759216B1C93005C91B5 /* AgentNotesViewController.swift in Sources */,
 				18F2A71420E6390200FB266F /* SettingViewController.swift in Sources */,
 				1844D8E820DCD95500F4F857 /* BuyerPostViewController.swift in Sources */,
 				1881EC5C20F33F2900FFC795 /* BuyerBookMarkViewController.swift in Sources */,
@@ -1121,6 +1177,7 @@
 				18A0957520E9F79F00448167 /* SellerTestViewController.swift in Sources */,
 				18BAF14920EC8E2500EE0913 /* FindAgentViewController.swift in Sources */,
 				1881EC5320F32FD300FFC795 /* BuyerFindAgentViewController.swift in Sources */,
+				1859875C21917070000A6703 /* ProfessLanguageTableViewCell.swift in Sources */,
 				18006B3720D8B0BB00BE78D9 /* AgentsLoginViewController.swift in Sources */,
 				1844D8EB20DCE78800F4F857 /* AgentPostViewController.swift in Sources */,
 				183704FB20F616C800D89D2A /* AgentDetailTableViewCell.swift in Sources */,
@@ -1129,8 +1186,11 @@
 				1835F70F20D22A7300EDF812 /* AppDelegate.swift in Sources */,
 				1865967B20EDF1BD00CF8239 /* seletedAgentTableViewCell.swift in Sources */,
 				185301FC210ADC4E0088BEA1 /* SharedProposalViewController.swift in Sources */,
+				18D015A721AC127F006A99F2 /* SurveyQuesTableViewCell.swift in Sources */,
 				18006B3020D8ADFD00BE78D9 /* BuyerRegistrationViewController.swift in Sources */,
+				18C9EB6521A2830900790662 /* OthersResourcesViewController.swift in Sources */,
 				1844D8E520DCB5C800F4F857 /* SellerPostViewController.swift in Sources */,
+				18CFD002216C6336009F2B9F /* PersonalBioViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1239,6 +1299,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -1288,6 +1349,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1298,8 +1360,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 9W659J2E8Z;
 				INFOPLIST_FILE = 92Agents/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kft.-2Agents";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1314,8 +1377,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 9W659J2E8Z;
 				INFOPLIST_FILE = 92Agents/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kft.-2Agents";
 				PRODUCT_NAME = "$(TARGET_NAME)";

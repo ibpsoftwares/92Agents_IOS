@@ -36,14 +36,17 @@ pod 'Tags'
 ### Xib or Storyboard file
 
 setting
+
 ![image](./img/example1.png)
+
 ![image](./img/example2.png)
 
 view
+
 ![image](./img/example3.png) 
 ![image](./img/example4.png)
 
-
+done!
 
 <br><br><br>
 
@@ -57,7 +60,38 @@ import Tags
 let tagView = TagsView()
 self.view.addSubview(tagView)
 ```
-AutoLayout
+AutoLayout Example
+
+```swift
+tagView.translatesAutoresizingMaskIntoConstraints = false
+self.view.addConstraint(NSLayoutConstraint(
+    item: self.view,
+    attribute: .leading,
+    relatedBy: .equal,
+    toItem: tagView,
+    attribute: .leading,
+    multiplier: 1,
+    constant: 0)
+)
+self.view.addConstraint(NSLayoutConstraint(
+    item: self.view,
+    attribute: .trailing,
+    relatedBy: .equal,
+    toItem: tagView,
+    attribute: .trailing,
+    multiplier: 1,
+    constant: 0)
+)
+self.view.addConstraint(NSLayoutConstraint(
+    item: self.view,
+    attribute: .top,
+    relatedBy: .equal,
+    toItem: tagView,
+    attribute: .top,
+    multiplier: 1,
+    constant: 0)
+)
+```
 
 done!
 
@@ -66,6 +100,16 @@ done!
 
 
 ### Property
+
+tags
+
+```swift
+//Returned as an array of strings
+tagsView.tagTextArray//get-only
+
+//Returned as an array of TagButton
+tagsView.tagArray//get-only
+```
 
 height
 

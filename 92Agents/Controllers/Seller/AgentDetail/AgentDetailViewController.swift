@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import SKActivityIndicatorView
 
+@available(iOS 11.0, *)
 class AgentDetailViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     //MARK: IBoutlet and Variables
      @IBOutlet var tableView: UITableView!
@@ -151,9 +152,9 @@ class AgentDetailViewController: UIViewController,UICollectionViewDelegate,UICol
        
         self.notePostView.isHidden = true
         self.blurView.isHidden = true
-        print(applied_post)
-        print(applied_user_id)
-        print(postID)
+       // print(applied_post)
+       // print(applied_user_id)
+      //  print(postID)
         lblPostName.isHidden = true
          agentDetailAPI()
         if applied_post == "1" && applied_user_id == agentID{
@@ -191,6 +192,8 @@ class AgentDetailViewController: UIViewController,UICollectionViewDelegate,UICol
     }
     // MARK: - FindAgentAPI Method
     func agentDetailAPI(){
+        print(agentID)
+        print(postID)
         self.bookmarkArr.removeAll()
         SKActivityIndicator.spinnerColor(UIColor.darkGray)
         SKActivityIndicator.show("Loading...")
@@ -200,7 +203,7 @@ class AgentDetailViewController: UIViewController,UICollectionViewDelegate,UICol
         ]
         print(parameters)
         
-        Webservice.apiPost1(apiURl:  "http://92agents.com/api/Agentsdetails", parameters: parameters, headers: nil) { (response:[String : Any], error:NSError?) in
+        Webservice.apiPost1(apiURl:  "http://92agents.com/api/agentsDetails", parameters: parameters, headers: nil) { (response:[String : Any], error:NSError?) in
             if error != nil {
                 print(error?.localizedDescription as Any)
                 DispatchQueue.main.async(execute: {
@@ -397,11 +400,22 @@ class AgentDetailViewController: UIViewController,UICollectionViewDelegate,UICol
                             self.fileArr = ((((dict as NSDictionary).value(forKey: "response") as! NSArray).object(at: 0) as! NSDictionary).value(forKey: "files") as! NSArray)
                         }
                         // for AskedQues.
-                        if ((((dict as NSDictionary).value(forKey: "response") as! NSArray).object(at: 0) as! NSDictionary).value(forKey: "questions") as! NSArray).count > 0{
-                            self.quesArr = ((((dict as NSDictionary).value(forKey: "response") as! NSArray).object(at: 0) as! NSDictionary).value(forKey: "questions") as! NSArray)
-                           self.lblAskedQues.text = ((((((dict as NSDictionary).value(forKey: "response") as! NSArray).object(at: 0) as! NSDictionary).value(forKey: "questions") as! NSArray).object(at: 0) as! NSDictionary).value(forKey: "question") as! String)
-                            self.lblAskedQuesDate.text = "Posted: \(((((((dict as NSDictionary).value(forKey: "response") as! NSArray).object(at: 0) as! NSDictionary).value(forKey: "questions") as! NSArray).object(at: 0) as! NSDictionary).value(forKey: "created_at") as! String))"
+//                        if ((((dict as NSDictionary).value(forKey: "response") as! NSArray).object(at: 0) as! NSDictionary).value(forKey: "questions") as! NSArray).count > 0{
+//                            self.quesArr = ((((dict as NSDictionary).value(forKey: "response") as! NSArray).object(at: 0) as! NSDictionary).value(forKey: "questions") as! NSArray)
+//                           self.lblAskedQues.text = ((((((dict as NSDictionary).value(forKey: "response") as! NSArray).object(at: 0) as! NSDictionary).value(forKey: "questions") as! NSArray).object(at: 0) as! NSDictionary).value(forKey: "question") as! String)
+//                            self.lblAskedQuesDate.text = "Posted: \(((((((dict as NSDictionary).value(forKey: "response") as! NSArray).object(at: 0) as! NSDictionary).value(forKey: "questions") as! NSArray).object(at: 0) as! NSDictionary).value(forKey: "created_at") as! String))"
+//                        }
+                        // for bookmark
+                        if ((((dict as NSDictionary).value(forKey: "response") as! NSArray).object(at: 0) as! NSDictionary).value(forKey: "bookmark") as! NSArray).count > 0{
+                            self.lblAddBookmark.text = "BookMarked"
+                            for section in 0...((((dict as NSDictionary).value(forKey: "response") as! NSArray).object(at: 0) as! NSDictionary).value(forKey: "bookmark") as! NSArray).count  - 1 {
+                                self.bookmarkArr.append(BookMark.init(id: (((((dict as NSDictionary).value(forKey: "response") as! NSArray).object(at: 0) as! NSDictionary).value(forKey: "bookmark") as! NSArray).object(at: 0) as! NSDictionary).value(forKey: "bookmark_id") as! String, postText: "", bookmarkText: "", date: ""))
+                            }
                         }
+                        else{
+                            self.lblAddBookmark.text = "BookMark"
+                        }
+                        
                         var cgfloat1 = CGFloat()
                         if self.get_dest.count > 0{
 
@@ -461,15 +475,7 @@ class AgentDetailViewController: UIViewController,UICollectionViewDelegate,UICol
                          self.tableViewRealState.reloadData()
                     })
                     
-                    if ((((dict as NSDictionary).value(forKey: "response") as! NSArray).object(at: 0) as! NSDictionary).value(forKey: "bookmark") as! NSArray).count > 0{
-                        self.lblAddBookmark.text = "BookMarked"
-                        for section in 0...((((dict as NSDictionary).value(forKey: "response") as! NSArray).object(at: 0) as! NSDictionary).value(forKey: "bookmark") as! NSArray).count  - 1 {
-                            self.bookmarkArr.append(BookMark.init(id: (((((dict as NSDictionary).value(forKey: "response") as! NSArray).object(at: 0) as! NSDictionary).value(forKey: "bookmark") as! NSArray).object(at: 0) as! NSDictionary).value(forKey: "bookmark_id") as! String, postText: "", bookmarkText: "", date: ""))
-                        }
-                    }
-                    else{
-                        self.lblAddBookmark.text = "BookMark"
-                    }
+   
                 }else{
                     //Alert.showAlertMessage(vc: self, titleStr: "Alert!", messageStr: (response?.value(forKey: "error") as! String))
                 }

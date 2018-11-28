@@ -41,8 +41,8 @@ class BuyerTestsViewController: UIViewController,UITableViewDelegate,UITableView
         let url = URL(string: "http://92agents.com/api/tests")!
         // set params
         let jsonDict = [
-            "agent_user_id": Model.sharedInstance.userID,
-            "agents_users_role_id":Model.sharedInstance.userRole,
+            "add_by": Model.sharedInstance.userID,
+            "add_by_role":Model.sharedInstance.userRole,
             ]
         let jsonData = try! JSONSerialization.data(withJSONObject: jsonDict, options: [])
         
@@ -66,7 +66,7 @@ class BuyerTestsViewController: UIViewController,UITableViewDelegate,UITableView
                 print("json:", json)
                 for item in (json as NSDictionary).value(forKey: "questions") as! NSArray {
                     print(item)
-                    self.questionArr.append(getQuestions.init(ques_id: (item as! NSDictionary).value(forKey: "question_id") as! String, question: (item as! NSDictionary).value(forKey: "question") as! String))
+                    self.questionArr.append(getQuestions.init(ques_id: (item as! NSDictionary).value(forKey: "question_id") as! String, question: (item as! NSDictionary).value(forKey: "question") as! String, questionType: "", survey: ""))
                     
                 }
                 for row in 0...self.questionArr.count - 1{

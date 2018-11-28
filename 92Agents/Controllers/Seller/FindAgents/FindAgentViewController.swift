@@ -69,7 +69,7 @@ class FindAgentViewController: UIViewController , UIPickerViewDelegate, UIPicker
     //MARK: viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchCountryAPI()
+       // fetchCountryAPI()
         FindAgentAPI()
         // Do any additional setup after loading the view.
       
@@ -130,7 +130,7 @@ class FindAgentViewController: UIViewController , UIPickerViewDelegate, UIPicker
                       self.get_dest = (dict as NSDictionary).value(forKey: "response") as! NSArray
 
                     DispatchQueue.main.async(execute: {
-                        let int1: Int32 = Int32((self.get_dest.count) * 188 )
+                        let int1: Int32 = Int32((self.get_dest.count) * 220)
                         let cgfloat1 = CGFloat(int1)
                         self.tableViewHeight.constant = cgfloat1
                         self.tableView.reloadData()
@@ -283,9 +283,6 @@ class FindAgentViewController: UIViewController , UIPickerViewDelegate, UIPicker
                         self.postView.isHidden = false
                         DispatchQueue.main.async(execute: {
                             self.FindAgentAPI()
-                           // let int1: Int32 = Int32((self.get_dest.count) * 188 )
-                           // let cgfloat1 = CGFloat(int1)
-                           // self.tableViewHeight.constant = cgfloat1
                             self.postTableView.reloadData()
                         })
                     }else{
@@ -355,7 +352,10 @@ extension FindAgentViewController: UITableViewDataSource {
             if ((self.get_dest ).object(at: indexPath.row) as! NSDictionary).value(forKey: "description")  is NSNull {
             }
             else{
+                
                 cell1.lbleDesrcription.text = (((self.get_dest ).object(at: indexPath.row) as! NSDictionary).value(forKey: "description") as! String)
+                cell1.lbleDesrcription.adjustsFontSizeToFitWidth = false;
+                cell1.lbleDesrcription.lineBreakMode = NSLineBreakMode.byTruncatingTail;
             }
             cell1.tagListView.removeAllTags()
             if (((self.get_dest ).object(at: indexPath.row) as! NSDictionary).value(forKey: "skill_data") as! NSArray).count > 0 {
@@ -395,7 +395,7 @@ extension FindAgentViewController: UITableViewDataSource {
             print(response!)
             for item in (response!.value(forKey: "states") as! NSArray) {
                 print(item)
-                self.countryArr.append(getCountryName.init(name: ((item as! NSDictionary).value(forKey: "state_name") as! String), id: ((item as! NSDictionary).value(forKey: "state_id") as! String)))
+                self.countryArr.append(getCountryName.init(name: ((item as! NSDictionary).value(forKey: "state_name") as! String), id: String((item as! NSDictionary).value(forKey: "state_id") as! NSInteger)))
             }
         })
     }
@@ -474,6 +474,7 @@ extension FindAgentViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         print(((((self.get_dest ).object(at: indexPath.row) as! NSDictionary).value(forKey: "id") as! String)))
+        agentID = ((((self.get_dest ).object(at: indexPath.row) as! NSDictionary).value(forKey: "id") as! String))
         
         if(tableView == self.tableView)
         {
@@ -482,7 +483,7 @@ extension FindAgentViewController: UITableViewDelegate {
         else if(tableView == self.postTableView){
             let addressVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AgentDetailViewController") as! AgentDetailViewController
             addressVC.postID = (((((postArr as NSArray).object(at: 0) as! NSDictionary).value(forKey: "post") as! NSArray).object(at:indexPath.row ) as! NSDictionary).value(forKey: "post_id") as! String)
-            addressVC.agentID = ((((postArr as NSArray).object(at: 0) as! NSDictionary).value(forKey: "agents") as! NSDictionary).value(forKey: "id") as! String)
+            addressVC.agentID = agentID
             addressVC.applied_post = (((((postArr as NSArray).object(at: 0) as! NSDictionary).value(forKey: "post") as! NSArray).object(at:indexPath.row ) as! NSDictionary).value(forKey: "applied_post") as! String)
              addressVC.poatName = (((((postArr as NSArray).object(at: 0) as! NSDictionary).value(forKey: "post") as! NSArray).object(at:indexPath.row ) as! NSDictionary).value(forKey: "posttitle") as! String)
             if ((((postArr as NSArray).object(at: 0) as! NSDictionary).value(forKey: "post") as! NSArray).object(at:indexPath.row ) as! NSDictionary).value(forKey: "applied_user_id") is NSNull{

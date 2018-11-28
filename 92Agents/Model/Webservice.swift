@@ -19,25 +19,25 @@ struct FV_API
 }
 class Webservice: NSObject {
 //MARK:- POST APIs
+    
     class func apiPost (apiURl:String,parameters: [String:Any]?,headers:[String:Any]?, completionHandler: @escaping (NSDictionary,_ Error:NSError?) -> ()){
-
-       // let headers = ["Authorization":"Bearer ZWNvbW1lcmNl"]
-        // set token
         let token = "\(Model.sharedInstance.accessToken)"
-        let headers = ["Authorization":"Bearer \(token)"]
-        print(headers)
-        var strURL:String = FV_API.appBaseURL
+        let headers = ["Authorization":"Bearer \(token)"]//,"Accept": "application/json","Content-Type" :"application/json"
+       // print(headers)
+        //var strURL:String = FV_API.appBaseURL
 
-        if((apiURl as NSString).length > 0)
-        {
-            strURL = strURL + "/" + apiURl
-        }
-        Alamofire.request(apiURl, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { response in
-           // print("Request  \(String(describing: response.request))")
-           // print("RESPONSE \(String(describing: response.result.value))")
-            //print("RESPONSE \(response.result)")
-          //  print("RESPONSE \(response)")
-
+        //if((apiURl as NSString).length > 0)
+//        {
+//            strURL = strURL + "/" + apiURl
+//        }
+         let urlwithPercentEscapes = apiURl.addingPercentEncoding( withAllowedCharacters: CharacterSet.urlQueryAllowed)
+        // print(apiURl)
+        Alamofire.request(urlwithPercentEscapes!, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { response in
+            print("Request  \(String(describing: response.request))")
+            print("RESPONSE \(String(describing: response.result.value))")
+            print("RESPONSE \(response.result)")
+            print("RESPONSE \(response)")
+           
             switch(response.result) {
             case .success(_):
                 if response.result.value != nil{
@@ -68,11 +68,11 @@ class Webservice: NSObject {
         {
             strURL = strURL + "/" + apiURl
         }
-        
+        print(apiURl)
         Alamofire.request(apiURl, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { response in
-            // print("Request  \(String(describing: response.request))")
-            // print("RESPONSE \(String(describing: response.result.value))")
-            //print("RESPONSE \(response.result)")
+             print("Request  \(String(describing: response.request))")
+             print("RESPONSE \(String(describing: response.result.value))")
+            print("RESPONSE \(response.result)")
             //  print("RESPONSE \(response)")
             
             switch(response.result) {

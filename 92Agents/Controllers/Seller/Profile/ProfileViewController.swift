@@ -12,7 +12,7 @@ import Kingfisher
 import Alamofire
 
 
-class ProfileViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+class ProfileViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource,UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
      //MARK: IBOutlet and Variables
     var pickerView : UIPickerView!
@@ -42,6 +42,7 @@ class ProfileViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
      var value = String()
     var cityID = String()
     var stateID = String()
+     //MARK: viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -64,9 +65,8 @@ class ProfileViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         self.textFax.isUserInteractionEnabled = false
         self.textZipcode.isUserInteractionEnabled = false
         
-        fetchCountryAPI()
+        //fetchCountryAPI()
         profileAPI()
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -98,10 +98,7 @@ class ProfileViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
             print(self.fileArr)
         
         })
-        
     }
-    
-    
     @IBAction func btnBack(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
@@ -138,44 +135,102 @@ class ProfileViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
                     let url = URL(string: (((((response)?.value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "photo") as! String))
                     self.profileImg.kf.indicatorType = .activity
                     self.profileImg.kf.setImage(with: url,placeholder: nil)
-                    self.lblEmail.text = (((((response)?.value(forKey: "response") as! NSDictionary) ).value(forKey: "user") as! NSDictionary).value(forKey: "email") as! String)
-                    self.lblFullName.text = (((((response)?.value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "name") as! String)
-                    self.textAboutme.text = (((((response)?.value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "description") as! String)
-                    self.textEmail.text = (((((response)?.value(forKey: "response") as! NSDictionary) ).value(forKey: "user") as! NSDictionary).value(forKey: "email") as! String)
-                    self.textFullNamel.text = (((((response)?.value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "name") as! String)
-                    self.textAdd1.text = (((((response )?.value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "address") as! String)
-                    self.textadd2.text = (((((response)?.value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "address2") as! String)
-                    self.textCity.text = (((((response)?.value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "city_id") as! String)
-                    
+                    if ((((response)?.value(forKey: "response") as! NSDictionary) ).value(forKey: "user") as! NSDictionary).value(forKey: "email") is NSNull{
+                        
+                    }
+                    else{
+                        self.lblEmail.text = (((((response)?.value(forKey: "response") as! NSDictionary) ).value(forKey: "user") as! NSDictionary).value(forKey: "email") as! String)
+                    }
+                    if ((((response)?.value(forKey: "response") as! NSDictionary) ).value(forKey: "user") as! NSDictionary).value(forKey: "name") is NSNull{
+                        
+                    }
+                    else{
+                        self.lblFullName.text = (((((response)?.value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "name") as! String)
+                    }
+                    if ((((response)?.value(forKey: "response") as! NSDictionary) ).value(forKey: "user") as! NSDictionary).value(forKey: "description") is NSNull{
+                        
+                    }
+                    else{
+                         self.textAboutme.text = (((((response)?.value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "description") as! String)
+                    }
+                    if ((((response)?.value(forKey: "response") as! NSDictionary) ).value(forKey: "user") as! NSDictionary).value(forKey: "email") is NSNull{
+                        
+                    }
+                    else{
+                         self.textEmail.text = (((((response)?.value(forKey: "response") as! NSDictionary) ).value(forKey: "user") as! NSDictionary).value(forKey: "email") as! String)
+                    }
+                    if ((((response)?.value(forKey: "response") as! NSDictionary) ).value(forKey: "user") as! NSDictionary).value(forKey: "name") is NSNull{
+                        
+                    }
+                    else{
+                         self.textFullNamel.text = (((((response)?.value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "name") as! String)
+                    }
+                    if ((((response)?.value(forKey: "response") as! NSDictionary) ).value(forKey: "user") as! NSDictionary).value(forKey: "address") is NSNull{
+                        
+                    }
+                    else{
+                        self.textAdd1.text = (((((response )?.value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "address") as! String)
+                    }
+                    if ((((response)?.value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "address2") is NSNull{
+                        
+                    }
+                    else{
+                        self.textadd2.text = (((((response)?.value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "address2") as! String)
+                    }
+                    if ((((response)?.value(forKey: "response") as! NSDictionary) ).value(forKey: "user") as! NSDictionary).value(forKey: "city_id") is NSNull{
+                        
+                    }
+                    else{
+                        self.textCity.text = (((((response)?.value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "city_id") as! String)
+                    }
                     if ((((((response)?.value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "state") as! NSDictionary).value(forKey: "state_name") as! String) == "" {
                     }
                     else{
-                        
                          self.textState.text = ((((((response)?.value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "state") as! NSDictionary).value(forKey: "state_name") as! String)
                         self.stateID = String((((((response)?.value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "state") as! NSDictionary).value(forKey: "state_id") as! NSInteger)
                         self.cityID = String((((((response)?.value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "city") as! NSDictionary).value(forKey: "city_id") as! NSInteger)
-                        
                         self.textCity.text = ((((((response)?.value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "city") as! NSDictionary).value(forKey: "city_name") as! String)
-                       
                     }
-                    self.textPhonecell.text = (((((response)?.value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "phone") as! String)
-                    self.textPhonework.text = (((((response )?.value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "phone_work") as! String)
-                    self.textPhonechome.text = (((((response )?.value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "phone_home") as! String)
-                    self.textFax.text = (((((response)?.value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "zip_code") as! String)
-                    self.textZipcode.text = (((((response)?.value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "zip_code") as! String)
+                    if ((((response)?.value(forKey: "response") as! NSDictionary) ).value(forKey: "user") as! NSDictionary).value(forKey: "phone") is NSNull{
+                        
+                    }
+                    else{
+                       self.textPhonecell.text = (((((response)?.value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "phone") as! String)
+                    }
+                    if ((((response )?.value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "phone_work") is NSNull{
+                        
+                    }
+                    else{
+                         self.textPhonework.text = (((((response )?.value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "phone_work") as! String)
+                    }
+                    if ((((response )?.value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "phone_home") is NSNull{
+                        
+                    }
+                    else{
+                         self.textPhonechome.text = (((((response )?.value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "phone_home") as! String)
+                    }
+                    if ((((response )?.value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "zip_code") is NSNull{
+                        
+                    }
+                    else{
+                        self.textFax.text = (((((response)?.value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "zip_code") as! String)
+                    }
+                    if ((((response )?.value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "zip_code") is NSNull{
+                        
+                    }
+                    else{
+                         self.textZipcode.text = (((((response)?.value(forKey: "response") as! NSDictionary) ).value(forKey: "userdetails") as! NSDictionary).value(forKey: "zip_code") as! String)
+                    }
                 })
-                    
                 }else{
                     Alert.showAlertMessage(vc: self, titleStr: "Alert!", messageStr: (response?.value(forKey: "error") as! String))
                 }
             }
-            
         }
     @IBAction func btnEditAboutMe(_ sender: UIButton) {
         btnAboutMe.isHidden = false
         self.textAboutme.isUserInteractionEnabled = true
         value = "aboutme"
-        
     }
     @IBAction func btnEditLocation(_ sender: UIButton) {
         btnLocation.isHidden = false
@@ -196,7 +251,6 @@ class ProfileViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
          self.textFullNamel.isUserInteractionEnabled = true
          value = "account"
     }
-    
     @IBAction func btnAboutMe(_ sender: UIButton) {
         updateProfileAPI()
     }
@@ -243,9 +297,8 @@ class ProfileViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
                       "zip_code" : self.textZipcode.text!
             ]
         }
-        
         print(parameters)
-        Webservice.apiPost(apiURl:"http://92agents.com/api/editFields", parameters: parameters, headers: nil) { (response:NSDictionary?, error:NSError?) in
+        Webservice.apiPost(apiURl:"http://92agents.com/api/profile/editFields", parameters: parameters, headers: nil) { (response:NSDictionary?, error:NSError?) in
             if error != nil {
                 print(error?.localizedDescription as Any)
                 DispatchQueue.main.async(execute: {
@@ -258,8 +311,6 @@ class ProfileViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
                 SKActivityIndicator.dismiss()
             })
             print(response!)
-            
-            
             if self.value == "aboutme"{
                 self.btnAboutMe.isHidden = true
             }
@@ -269,10 +320,6 @@ class ProfileViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
             else if self.value == "location"{
                 self.btnLocation.isHidden = true
             }
-            
-            
-            
-            
             if let dict = response as? [AnyHashable:Any] {
                 print(dict)
                 if ((dict as NSDictionary).value(forKey: "status") as? String == "100"){
@@ -282,7 +329,6 @@ class ProfileViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
                 Alert.showAlertMessage(vc: self, titleStr: "Alert!", messageStr: (response?.value(forKey: "error") as! String))
             }
         }
-        
     }
     //MARK: textFieldValidation Method
     func textFieldValidation()
@@ -290,7 +336,7 @@ class ProfileViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         if (self.textCity.text?.isEmpty)! {
             Alert.showAlertMessage(vc: self, titleStr: "Alert!", messageStr: "Select City")
         }
-      else  if (self.textState.text?.isEmpty)! {
+        else  if (self.textState.text?.isEmpty)! {
             Alert.showAlertMessage(vc: self, titleStr: "Alert!", messageStr: "Select State")
         }
     }
@@ -366,7 +412,6 @@ class ProfileViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
             select = "city"
         }
     }
-    
     //MARK:- Button
     @objc func doneClick() {
         if select == "state" {
@@ -384,6 +429,7 @@ class ProfileViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
             self.textCity.resignFirstResponder()
         }
     }
+     //MARK:- Choose Gallery and Camera
     @IBAction func chooseProfilePicBtnClicked(sender: AnyObject) {
         let alert:UIAlertController=UIAlertController(title: "Choose Image", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
         let cameraAction = UIAlertAction(title: "Camera", style: UIAlertActionStyle.default)
@@ -400,7 +446,6 @@ class ProfileViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         {
             UIAlertAction in
         }
-        
         // Add the actions
         picker.delegate = self
         alert.addAction(cameraAction)

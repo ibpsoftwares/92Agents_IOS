@@ -11,10 +11,12 @@ import UIKit
 class SellerTestTableViewCell: UITableViewCell {
 
     @IBOutlet var lblQuestion: UILabel!
-     @IBOutlet var lblNo: UILabel!
+    @IBOutlet var lblNo: UILabel!
     @IBOutlet var btnAnswer: UIButton!
+    @IBOutlet var btnSurvey: UIButton!
     @IBOutlet var textAns: UITextField!
     @IBOutlet var btnSave: UIButton!
+    @IBOutlet var surveyImg: UIButton!
     @IBOutlet var ansView: UIView!
     @IBOutlet var viewHeight: NSLayoutConstraint!
     override func awakeFromNib() {

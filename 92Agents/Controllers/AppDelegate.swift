@@ -8,17 +8,18 @@
 
 import UIKit
 import CoreData
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 @available(iOS 10.0, *)
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
+        IQKeyboardManager.shared.enable = true
+           
         UIApplication.statusBarBackgroundColor = UIColor (red: 135.0/255.0, green: 194.0/255.0, blue: 73.0/255.0, alpha: 1)
         UIApplication.shared.statusBarStyle = .lightContent
         UITabBar.appearance().barTintColor = UIColor (red: 67.0/255.0, green: 140.0/255.0, blue: 234.0/255.0, alpha: 1)

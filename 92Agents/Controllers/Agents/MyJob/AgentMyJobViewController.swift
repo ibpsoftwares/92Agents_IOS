@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import SKActivityIndicatorView
 
 class AgentMyJobViewController: UIViewController {
 
@@ -24,18 +26,65 @@ class AgentMyJobViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        myJobAPI()
-        //self.agentView.isHidden = true
-       // self.btnClose.isHidden = true
+        //loginMethodAPI()
         self.check = false
         tableView.tableFooterView = UIView()
-       // agentTableView.tableFooterView = UIView()
+         myJobAPI()
     }
 
+   
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    //MARK: loginAPI Methods
+    func loginMethodAPI(){
+        SKActivityIndicator.spinnerColor(UIColor.darkGray)
+        SKActivityIndicator.show("Loading...")
+        let parameters: Parameters = [
+            "agents_user_id": Model.sharedInstance.userID,
+            "agents_users_role_id":Model.sharedInstance.userRole,
+            "selected":"2"
+        ]
+        print(parameters)
+        
+        Webservice.apiPost(apiURl:"http://92agents.com/api/state", parameters: nil, headers: nil) { (response:NSDictionary?, error:NSError?) in
+            if error != nil {
+                print(error?.localizedDescription as Any)
+                DispatchQueue.main.async(execute: {
+                    SKActivityIndicator.dismiss()
+                })
+                Alert.showAlertMessage(vc: self, titleStr: "Alert!", messageStr: "Login Failed.Try Again..")
+                return
+                
+            }
+            DispatchQueue.main.async(execute: {
+                SKActivityIndicator.dismiss()
+            })
+            print(response!)
+            
+            if let dict = response as? [AnyHashable:Any] {
+                print(dict)
+                if ((dict as NSDictionary).value(forKey: "status") as? String == "100"){
+                    Model.sharedInstance.accessToken = ((dict as NSDictionary).value(forKey: "access_token") as? String)!
+                    
+                    let tempNumber = (((dict as NSDictionary).value(forKey: "user") as! NSDictionary).value(forKey: "id") as! Int)
+                    let stringTemp = String(tempNumber)
+                    Model.sharedInstance.userID = stringTemp
+                    let addressVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SellerDashBoardViewController") as! SellerDashBoardViewController
+                    self.navigationController?.pushViewController(addressVC, animated: true)
+                    
+                    
+                }else{
+                    Alert.showAlertMessage(vc: self, titleStr: "Alert!", messageStr: (response?.value(forKey: "error") as! String))
+                }
+            }
+            
+        }
+    }
+    
+    
     
     @IBAction func btnAddNewJob(_ sender: UIButton) {
         let signupVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddNewJobViewController") as! AddNewJobViewController
@@ -46,19 +95,23 @@ class AgentMyJobViewController: UIViewController {
     }
     //MARK: MyjobAPI Method
     func myJobAPI() {
-        
+        SKActivityIndicator.spinnerColor(UIColor.darkGray)
+        SKActivityIndicator.show("Loading...")
         let url = URL(string: "http://92agents.com/api/agentPosts")!
         let jsonDict = [
             "agents_user_id": Model.sharedInstance.userID,
             "agents_users_role_id":Model.sharedInstance.userRole,
+            "selected":"2"
             ]
-        let jsonData = try! JSONSerialization.data(withJSONObject: jsonDict, options: [])
         
+       
+        let jsonData = try! JSONSerialization.data(withJSONObject: jsonDict, options: [])
         var request = URLRequest(url: url)
         request.httpMethod = "post"
         let token = "\(Model.sharedInstance.accessToken)"
+        print(token)
         request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = jsonData
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
@@ -67,20 +120,17 @@ class AgentMyJobViewController: UIViewController {
                 return
             }
             do {
+                DispatchQueue.main.async(execute: {
+                    SKActivityIndicator.dismiss()
+                })
                 guard let data = data else { return }
+                let result = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) as? [String:AnyObject]
+                print(result!)
                 guard let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: AnyObject] else { return }
                 print("json:", json)
                 self.get_Resp = (json as NSDictionary).value(forKey: "posts") as! NSArray
                 print(self.get_Resp)
-//                for item in (json as NSDictionary).value(forKey: "posts") as! NSArray {
-//                    print(item)
-//                    if (item as! NSDictionary).value(forKey: "state_name")  is NSNull {
-//                        self.myJobArr.append(myJobs.init(add: (item as! NSDictionary).value(forKey: "address1") as! String, city: (item as! NSDictionary).value(forKey: "city") as! String, state: "", zipcode: (item as! NSDictionary).value(forKey: "zip") as! String, posttitle: (item as! NSDictionary).value(forKey: "posttitle") as! String, propertyDetail: (item as! NSDictionary).value(forKey: "details") as! String, postViewCount: (item as! NSDictionary).value(forKey: "post_view_count") as! NSInteger, date: (item as! NSDictionary).value(forKey: "created_at") as! String))
-//                    }
-//                    else{
-//                        self.myJobArr.append(myJobs.init(add: (item as! NSDictionary).value(forKey: "address1") as! String, city: (item as! NSDictionary).value(forKey: "city") as! String, state: (item as! NSDictionary).value(forKey: "state_name") as! String, zipcode: (item as! NSDictionary).value(forKey: "zip") as! String, posttitle: (item as! NSDictionary).value(forKey: "posttitle") as! String, propertyDetail: (item as! NSDictionary).value(forKey: "details") as! String, postViewCount: (item as! NSDictionary).value(forKey: "post_view_count") as! NSInteger, date: (item as! NSDictionary).value(forKey: "created_at") as! String))
-//                    }
-//                }
+               
                 DispatchQueue.main.async(execute: {
                     self.tableView.reloadData()
                 })
@@ -122,36 +172,36 @@ extension AgentMyJobViewController: UITableViewDataSource {
         {
             cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath as IndexPath) as! AgentMyJobTableViewCell
             
-            if ((self.get_Resp ).object(at: 0) as! NSDictionary).value(forKey: "posttitle")  is NSNull{
+            if ((self.get_Resp ).object(at: indexPath.row) as! NSDictionary).value(forKey: "posttitle")  is NSNull{
                 
             }
             else{
                 
-                cell.lblPostTitle.text =  (((self.get_Resp ).object(at: 0) as! NSDictionary).value(forKey: "posttitle") as! String)
+                cell.lblPostTitle.text =  (((self.get_Resp ).object(at: indexPath.row) as! NSDictionary).value(forKey: "posttitle") as! String)
             }
             
-            if ((self.get_Resp ).object(at: 0) as! NSDictionary).value(forKey: "details")  is NSNull{
+            if ((self.get_Resp ).object(at: indexPath.row) as! NSDictionary).value(forKey: "details")  is NSNull{
                 cell.lblDetail.text = ""
             }
             else{
                 
-                cell.lblDetail.text =  (((self.get_Resp ).object(at: 0) as! NSDictionary).value(forKey: "details") as! String)
+                cell.lblDetail.text =  (((self.get_Resp ).object(at: indexPath.row) as! NSDictionary).value(forKey: "details") as! String)
             }
             //cell.lblDetail.adjustsFontSizeToFitWidth = false;
            // cell.lblDetail.lineBreakMode = NSLineBreakMode.byTruncatingTail;
-            if ((self.get_Resp ).object(at: 0) as! NSDictionary).value(forKey: "created_at")  is NSNull{
+            if ((self.get_Resp ).object(at: indexPath.row) as! NSDictionary).value(forKey: "created_at")  is NSNull{
                  cell.lblDate.text = ""
             }
             else{
                 
-                cell.lblDate.text =  (((self.get_Resp ).object(at: 0) as! NSDictionary).value(forKey: "created_at") as! String)
+                cell.lblDate.text =  (((self.get_Resp ).object(at: indexPath.row) as! NSDictionary).value(forKey: "created_at") as! String)
             }
-            if ((self.get_Resp ).object(at: 0) as! NSDictionary).value(forKey: "name")  is NSNull{
+            if ((self.get_Resp ).object(at: indexPath.row) as! NSDictionary).value(forKey: "name")  is NSNull{
                 
             }
             else{
                 
-                cell.lblName.text =  (((self.get_Resp ).object(at: 0) as! NSDictionary).value(forKey: "name") as! String)
+                cell.lblName.text =  (((self.get_Resp ).object(at: indexPath.row) as! NSDictionary).value(forKey: "name") as! String)
             }
             
             cell.lblActiveAgent.text = "1 Active Agent"

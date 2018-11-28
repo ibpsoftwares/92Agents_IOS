@@ -31,8 +31,6 @@ class AgentDashBoardViewController: UIViewController {
         let nib = UINib(nibName: "DashBoardTableViewCell", bundle: nil)
         dashboardTableView.register(nib, forCellReuseIdentifier: kCellIdentifier)
         dashboardTableView.tableFooterView = UIView()
-        //Properties of Views
-      
         menuContainerView.layer.shadowRadius = 6
         // call api
         dashboardAPI()
@@ -126,13 +124,11 @@ class AgentDashBoardViewController: UIViewController {
                 print("error:", error)
             }
         }
-        
         task.resume()
     }
 }
 extension AgentDashBoardViewController: UITableViewDataSource {
     // MARK: - Table view data source
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

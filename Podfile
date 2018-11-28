@@ -14,6 +14,7 @@ target '92Agents' do
  pod 'LNSideMenu', '~> 3.0'
  pod 'Tags'
  pod 'TagListView', '~> 1.0'
+ pod 'ViewPager-Swift'
   target '92AgentsTests' do
     inherit! :search_paths
     # Pods for testing

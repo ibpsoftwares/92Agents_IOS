@@ -11,6 +11,7 @@ import UIKit
 class SellerBoolmarlTableViewCell: UITableViewCell {
 
     @IBOutlet var textPost: UILabel!
+    @IBOutlet var lbl: UILabel!
     @IBOutlet var textBookmark: UILabel!
     @IBOutlet var textDate: UILabel!
     @IBOutlet var btnDelete: UIButton!

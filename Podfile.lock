@@ -1,11 +1,12 @@
 PODS:
-  - Alamofire (4.6.0)
-  - IQKeyboardManagerSwift (5.0.7)
-  - Kingfisher (4.6.1)
-  - LNSideMenu (3.0)
+  - Alamofire (4.7.3)
+  - IQKeyboardManagerSwift (6.1.1)
+  - Kingfisher (4.10.0)
+  - LNSideMenu (3.4)
   - SKActivityIndicatorView (0.1.0)
-  - TagListView (1.3.0)
-  - Tags (0.1.1)
+  - TagListView (1.3.1)
+  - Tags (0.1.8)
+  - ViewPager-Swift (1.2.1)
 
 DEPENDENCIES:
   - Alamofire (~> 4.5)
@@ -15,16 +16,29 @@ DEPENDENCIES:
   - SKActivityIndicatorView
   - TagListView (~> 1.0)
   - Tags
+  - ViewPager-Swift
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - IQKeyboardManagerSwift
+    - Kingfisher
+    - LNSideMenu
+    - SKActivityIndicatorView
+    - TagListView
+    - Tags
+    - ViewPager-Swift
 
 SPEC CHECKSUMS:
-  Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
-  IQKeyboardManagerSwift: 30fb3a61de1af53a95e02b80fb54ed0a19d5ede5
-  Kingfisher: 1f9157d9c02b380cbd0b7cc890161195164eb634
-  LNSideMenu: c02e582f6a5ed6c6ef455f45c895e3db438d4832
+  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  IQKeyboardManagerSwift: 977affaeb4d6e971975c7790a6850f31d38f1207
+  Kingfisher: 43c4b802d8b5256cf1f4379e9cd10b329be6d3e2
+  LNSideMenu: 771e5a077d7273d5a7f75a0df804e7f24121c160
   SKActivityIndicatorView: f46936f760d33eb8235333242269bf01cc9248ae
-  TagListView: 669f7d4455003c877655875d34829731c4191528
-  Tags: 4ecf04ae849afd03d91c9ff49f9e8fbab8f3aa2b
+  TagListView: 6dafd34a61021c6db72c0c8e3a044054c9854311
+  Tags: 06eb9d45fcc234025d1b0053f78b9bb27f53a9d5
+  ViewPager-Swift: 2ec693504b75e818fc86437499860b64f0331b22
 
-PODFILE CHECKSUM: d228f818c0758d8d97dbb5f449414ec67cc3b66d
+PODFILE CHECKSUM: 5c27e4153a2f908aaace792e7338eb023c58880b
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.3

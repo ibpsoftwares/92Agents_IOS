@@ -14,10 +14,13 @@ import SKActivityIndicatorView
 class getQuestions {
     var ques_id: String
     var question : String
-    
-    init(ques_id: String,question : String) {
+    var questionType : String
+    var survey : String
+    init(ques_id: String,question : String,questionType:String,survey:String) {
         self.ques_id = ques_id
         self.question = question
+        self.questionType = questionType
+        self.survey = survey
     }
 }
 class getAnswer {
@@ -76,17 +79,22 @@ class SellerTestViewController: UIViewController,UITableViewDelegate,UITableView
                 print(dict)
                 if ((dict as NSDictionary).value(forKey: "status") as? String == "100"){
                    
-                    for item in (dict as NSDictionary).value(forKey: "questions") as! NSArray {
-                        print(item)
-                        self.questionArr.append(getQuestions.init(ques_id: (item as! NSDictionary).value(forKey: "question_id") as! String, question: (item as! NSDictionary).value(forKey: "question") as! String))
+                    if ((dict as NSDictionary).value(forKey: "questions") as! NSArray).count > 0{
+                        for item in (dict as NSDictionary).value(forKey: "questions") as! NSArray {
+                            print(item)
+                            self.questionArr.append(getQuestions.init(ques_id: (item as! NSDictionary).value(forKey: "question_id") as! String, question: (item as! NSDictionary).value(forKey: "question") as! String, questionType: "", survey: (item as! NSDictionary).value(forKey: "survey") as! String))
+                        }
+                        for row in 0...self.questionArr.count - 1{
+                            self.ansArr.append(getAnswer.init(answer: ((dict as NSDictionary).value(forKey: "answers") as! NSDictionary).object(forKey: self.questionArr[row].ques_id) as! String))
+                        }
+                        print(self.ansArr)
+                        DispatchQueue.main.async(execute: {
+                            self.tableView.reloadData()
+                        })
                     }
-                    for row in 0...self.questionArr.count - 1{
-                        self.ansArr.append(getAnswer.init(answer: ((dict as NSDictionary).value(forKey: "answers") as! NSDictionary).object(forKey: self.questionArr[row].ques_id) as! String))
+                    else{
+                         Alert.showAlertMessage(vc: self, titleStr: "Alert!", messageStr: "No Questions Available!")
                     }
-                    print(self.ansArr)
-                    DispatchQueue.main.async(execute: {
-                        self.tableView.reloadData()
-                    })
                 }else{
                     Alert.showAlertMessage(vc: self, titleStr: "Alert!", messageStr: (response?.value(forKey: "error") as! String))
                 }
@@ -124,7 +132,7 @@ class SellerTestViewController: UIViewController,UITableViewDelegate,UITableView
                 print("json:", json)
                 for item in (json as NSDictionary).value(forKey: "questions") as! NSArray {
                     print(item)
-                    self.questionArr.append(getQuestions.init(ques_id: (item as! NSDictionary).value(forKey: "question_id") as! String, question: (item as! NSDictionary).value(forKey: "question") as! String))
+                    self.questionArr.append(getQuestions.init(ques_id: (item as! NSDictionary).value(forKey: "question_id") as! String, question: (item as! NSDictionary).value(forKey: "question") as! String, questionType: "", survey: ""))
                 }
                 for row in 0...self.questionArr.count - 1{
                     self.ansArr.append(getAnswer.init(answer: ((json as NSDictionary).value(forKey: "answers") as! NSDictionary).object(forKey: self.questionArr[row].ques_id) as! String))

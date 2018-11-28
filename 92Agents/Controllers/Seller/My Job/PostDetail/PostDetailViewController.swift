@@ -108,11 +108,7 @@ class PostDetailViewController: UIViewController,UITableViewDelegate,UITableView
         tagListView.removeAllTags()
         tagListView.addTags([(PostDict ).value(forKey: "when_do_you_want_to_sell") as! String])
          tagListView.addTags([(PostDict ).value(forKey: "home_type") as! String])
-        
-//        for section in 0...(((self.get_dest ).object(at: 0) as! NSDictionary).value(forKey: "skill_data") as! NSArray).count - 1 {
-//            let str = ((((self.get_dest ).object(at: indexPath.row) as! NSDictionary).value(forKey: "skill_data") as! NSArray).object(at: section) as! NSDictionary).value(forKey: "skill") as! String
-//            cell.tagListView.addTags([str])
-//        }
+
     }
 
     override func didReceiveMemoryWarning() {
